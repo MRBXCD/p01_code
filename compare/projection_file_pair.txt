@@ -1,0 +1,6 @@
+/projection/dl/projections_train_8-16.npz /projection/raw/Projection_train_data_16_angles_padded.npz
+/projection/dl/projections_train_16-32.npz /projection/raw/Projection_train_data_32_angles_padded.npz
+/projection/dl/projections_train_32-64.npz /projection/raw/Projection_train_data_64_angles_padded.npz
+/projection/dl/projections_val_8-16.npz /projection/raw/Projection_val_data_16_angles_padded.npz
+/projection/dl/projections_val_16-32.npz /projection/raw/Projection_val_data_32_angles_padded.npz
+/projection/dl/projections_val_32-64.npz /projection/raw/Projection_val_data_64_angles_padded.npz

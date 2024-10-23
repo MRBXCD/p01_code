@@ -1,0 +1,6 @@
+/voxel/recons/dl/Val_Recons_SIRT_8-16_angles.npz /voxel/recons/raw/Val_Recons_SIRT_8_angles.npz
+/voxel/recons/dl/Val_Recons_SIRT_16-32_angles.npz /voxel/recons/raw/Val_Recons_SIRT_16_angles.npz
+/voxel/recons/dl/Val_Recons_SIRT_32-64_angles.npz /voxel/recons/raw/Val_Recons_SIRT_32_angles.npz
+/voxel/recons/dl/Train_Recons_SIRT_8-16_angles.npz /voxel/recons/raw/Train_Recons_SIRT_8_angles.npz
+/voxel/recons/dl/Train_Recons_SIRT_16-32_angles.npz /voxel/recons/raw/Train_Recons_SIRT_16_angles.npz
+/voxel/recons/dl/Train_Recons_SIRT_32-64_angles.npz /voxel/recons/raw/Train_Recons_SIRT_32_angles.npz

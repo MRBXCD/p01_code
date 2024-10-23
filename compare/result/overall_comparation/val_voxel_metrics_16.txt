@@ -1,0 +1,15 @@
+raw_vs_rr:
+RMSE: 0.0517
+SSIM: 0.8431
+PSNR: 25.7364
+
+raw_vs_dl:
+RMSE: 0.0535
+SSIM: 0.8038
+PSNR: 25.4287
+
+rr_vs_dl:
+RMSE: 0.0251
+SSIM: 0.8632
+PSNR: 32.0089
+
