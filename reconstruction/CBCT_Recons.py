@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import os
 import data_handler
 from tqdm import tqdm
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import root_mean_squared_error
 
 
 class Projection:
@@ -275,7 +275,7 @@ class Recons:
             # recons_voxel_normalized = (voxels[index]*255).astype(np.int64)
             # truth_voxel_normalized = (voxel_truth*255).astype(np.int64)
             # mse = mean_squared_error(recons_voxel_normalized.flatten(), truth_voxel_normalized.flatten())
-            mse = mean_squared_error(voxels[index].flatten(), voxel_truth.flatten())
+            mse = root_mean_squared_error(voxels[index].flatten(), voxel_truth.flatten())
             # ssim = ssim3D.ssim3d(voxels[index], voxel_truth)
             # save slices
             plt.imsave(os.path.join(slice_path, f"{self.num_angles}_std={self.std}_{index}.png"),
