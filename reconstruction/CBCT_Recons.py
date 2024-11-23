@@ -221,6 +221,11 @@ class Recons:
             cfg['ProjectionDataId'] = proj_id
             cfg['option'] = {}
             cfg['option']['MinConstraint'] = 0
+        elif self.algorithm == 'CGLS':
+            cfg = astra.astra_dict('CGLS3D_CUDA')
+            cfg['ReconstructionDataId'] = astra.data3d.create('-vol', vol_geom, data=initial_voxel)
+            cfg['ProjectionDataId'] = proj_id
+
 
         # 创建并运行算法
         alg_id = astra.algorithm.create(cfg)

@@ -1,0 +1,11 @@
+{"time":"2024-11-23T19:42:04.250826443+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-23T19:42:04.250838943+08:00","level":"INFO","msg":"created symlink","path":"/home/mrb2/experiments/graduation_project/p01_code/projection_predict/wandb/run-20241123_194204-o4kcuxub/logs/debug-core.log"}
+{"time":"2024-11-23T19:42:04.452662411+08:00","level":"INFO","msg":"created new stream","id":"o4kcuxub"}
+{"time":"2024-11-23T19:42:04.452693312+08:00","level":"INFO","msg":"stream: started","id":"o4kcuxub"}
+{"time":"2024-11-23T19:42:04.452740573+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"o4kcuxub"}
+{"time":"2024-11-23T19:42:04.452777434+08:00","level":"INFO","msg":"handler: started","stream_id":"o4kcuxub"}
+{"time":"2024-11-23T19:42:04.452904686+08:00","level":"INFO","msg":"sender: started","stream_id":"o4kcuxub"}
+{"time":"2024-11-23T19:42:05.476393965+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-23T19:42:51.395153761+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/o4kcuxub/file_stream\": EOF"}
+{"time":"2024-11-23T19:44:21.681473101+08:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/o4kcuxub/file_stream"}
+{"time":"2024-11-23T19:44:21.681548172+08:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/CBCT-Reconstruction/projection-domain-dl/o4kcuxub/file_stream: {\"error\":\"run projection-domain-dl/o4kcuxub not found while streaming file\"}"}

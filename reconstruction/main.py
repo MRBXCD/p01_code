@@ -6,11 +6,11 @@ import numpy as np
 def main():
     parser = argparse.ArgumentParser()
     # geom parameters
-    parser.add_argument('--operation', type=str, default='projection',
+    parser.add_argument('--operation', type=str, default='reconstruction',
                         help='choose to do projection or reconstruction')
     parser.add_argument('--vol_size', type=int, default=148,
                         help='size of reconstruction volume')
-    parser.add_argument('--n_angle', type=int, default=16,
+    parser.add_argument('--n_angle', type=int, default=32,
                         help='number of projection angle')
     parser.add_argument('--d_s2o', type=int, default=1000,
                         help='Source-to-Origin Distance')
@@ -18,9 +18,9 @@ def main():
                         help='Origin-to-Detector Distance')
 
     # recons parameters
-    parser.add_argument('--projection_path_train', type=str, default='/home/mrb2/experiments/graduation_project/shared_data/voxel/recons/raw/Train_Recons_SIRT_8_angles.npz',
+    parser.add_argument('--projection_path_train', type=str, default='/home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_train_data_32_angles_padded.npz',
                         help='the path to the projection data')
-    parser.add_argument('--projection_path_val', type=str, default='/home/mrb2/experiments/graduation_project/shared_data/voxel/recons/raw/Val_Recons_SIRT_8_angles.npz',
+    parser.add_argument('--projection_path_val', type=str, default='/home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_val_data_32_angles_padded.npz',
                         help='the path to the projection data')
     parser.add_argument('--re_algorithm', type=str, default='SIRT',
                         help='choose which algorithm to do reconstruction (FDK/SIRT)')

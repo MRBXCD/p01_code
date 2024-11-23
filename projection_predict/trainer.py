@@ -1,4 +1,4 @@
-import astra
+import wandb
 import skimage.metrics as sk
 import numpy as np
 import torch
@@ -6,11 +6,12 @@ from matplotlib import pyplot as plt
 from torch import nn
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from utils import data_compose
+from utils.utils import data_compose
+from loss_method import PerceptualLoss, CombinedLoss
 # from pytorch_msssim import ssim, ms_ssim, SSIM, MS_SSIM
 
-from model import UNet
-from model_mutihead import UNet3Head
+from models.model import UNet
+from models.model_mutihead import UNet3Head
 
 # Import 3 models individually, train them with 3 individual loss
 from models_3_path.model1 import UNet3_1
@@ -18,12 +19,8 @@ from models_3_path.model2 import UNet3_2
 from models_3_path.model3 import UNet3_3
 
 from projectionDataloader import ProjectionDataset, ProjectionDataset_inference, ProjectionDataset_FineTune
-import onnx
-import onnx.utils
-import onnx.version_converter
 import os
 import torchvision.transforms.functional as F
-from torch.utils.tensorboard import SummaryWriter
 from collections import OrderedDict
 
 
@@ -44,13 +41,18 @@ class Trainer:
         self.stage = params.stage
         self.if_norm = params.norm
         self.loss_method = params.loss_method
-        self.loss_fn = torch.nn.MSELoss()
+        # self.loss_fn = torch.nn.MSELoss()
         # self.loss_ssim = SSIM(win_size=11, win_sigma=1.5, data_range=1, size_average=True, channel=1)
+        if self.loss_method == 'Perceptual':
+            self.loss_fn = PerceptualLoss().to(self.device)
+
         self.if_extraction = params.if_extraction
 
         # Define losses
         self.train_losses = []
         self.val_losses = []
+        self.train_metrics = []
+        self.val_metrics = []
 
         # Define the hyperparameters of the model
         hyper_parameters = {
@@ -65,12 +67,12 @@ class Trainer:
 
         # Load train data
         self.data_stage = hyper_parameters[self.stage][1]
-        self.train_input = f'./data/train/Projection_train_data_{self.data_stage}_angles_padded.npz'
-        print(self.train_input)
+        self.train_input = f'/home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_train_data_{self.data_stage}_angles_padded.npz'
+        print(f'Loaded training data from: {self.train_input}')
 
         # Load val data
-        self.val_input = f'./data/val/Projection_val_data_{self.data_stage}_angles_padded.npz'
-        print(self.val_input)
+        self.val_input = f'/home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_val_data_{self.data_stage}_angles_padded.npz'
+        print(f'Loaded val data from: {self.val_input}')
 
         print('Train data information:')
         train_dataset = ProjectionDataset(self.train_input, if_norm=False)
@@ -93,8 +95,8 @@ class Trainer:
             self.val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False, drop_last=False)
             print('Data not shuffled')
 
-        self.data_show(self.train_loader, 'train')
-        self.data_show(self.val_loader, 'val')
+        # self.data_show(self.train_loader, 'train')
+        # self.data_show(self.val_loader, 'val')
 
         if self.if_infer:
             self.model1 = UNet()
@@ -110,9 +112,6 @@ class Trainer:
             if self.NUM_GPU > 1:
                 print(f"Using {self.NUM_GPU} GPUs for training")
                 self.model = nn.DataParallel(self.model)
-
-        # Initialize tensorboard
-        self.writer = SummaryWriter(f'logs/{self.stage}_training')
 
     def load_weights(self, state_dict):
         """
@@ -140,12 +139,12 @@ class Trainer:
             self.model.load_state_dict(state_dict)
 
     def evaluation_metrics(self, predict, target):
-        predict = predict.squeeze().cpu().numpy()
-        target = target.squeeze().cpu().numpy()
+        predict = predict.detach().squeeze().cpu().numpy()
+        target = target.detach().squeeze().cpu().numpy()
         normalized_rmse = sk.normalized_root_mse(target, predict, normalization='min-max')
         psnr = sk.peak_signal_noise_ratio(target, predict, data_range=np.max(target) - np.min(target))
         ssim = sk.structural_similarity(target, predict, data_range=np.max(target) - np.min(target))
-        return normalized_rmse, psnr, ssim
+        return (normalized_rmse, psnr, ssim)
 
     def metrics_process(self, train_metrics, val_metrics):
         train_metrics = np.array(train_metrics)
@@ -161,11 +160,13 @@ class Trainer:
         avg_ssim_calc = lambda a: sum(a[:, 2]) / len(a[:, 2])
         avg_ssim_train = avg_ssim_calc(train_metrics)
         avg_ssim_val = avg_ssim_calc(val_metrics)
-        with open(f'./save_for_paper/{self.stage}_metrics.txt', 'w') as file:
-            file.write("train/val\n")
-            file.write(f"avg_nrmse:{avg_nrmse_train, avg_nrmse_val}\n")
-            file.write(f"avg_psnr:{avg_psnr_train, avg_psnr_val}\n")
-            file.write(f"avg_ssim:{avg_ssim_train, avg_ssim_val}\n")
+        if self.if_extraction:
+            with open(f'./save_for_paper/{self.stage}_metrics.txt', 'w') as file:
+                file.write("train/val\n")
+                file.write(f"avg_nrmse:{avg_nrmse_train, avg_nrmse_val}\n")
+                file.write(f"avg_psnr:{avg_psnr_train, avg_psnr_val}\n")
+                file.write(f"avg_ssim:{avg_ssim_train, avg_ssim_val}\n")
+            return (avg_nrmse_train, avg_nrmse_val), (avg_psnr_train, avg_psnr_val), (avg_ssim_train, avg_ssim_val)
 
     def mix_loss(self, input, target, amount=0.5):
         input = input / torch.max(input)
@@ -215,37 +216,41 @@ class Trainer:
     def train_epoch(self, epoch):
         self.model.train()
         total_losses = []
+        metrics = []
         optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
         for input, target in self.train_loader:
             input = input.unsqueeze(1).to(self.device)
             target = target.unsqueeze(1).to(self.device)
             predict = self.model(input)
             loss = self.loss_fn(predict, target)
-            self.writer.add_scalar('training total loss', loss, epoch)
+            metrics.append(self.evaluation_metrics(predict, target))
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
             total_losses.append(loss.item())
         avg_total_loss = sum(total_losses[-len(self.train_loader):]) / len(self.train_loader)
-        return avg_total_loss
+        avg_normalized_rmse = sum(metric[0] for metric in metrics) / len(metrics)
+        avg_normalized_psnr = sum(metric[1] for metric in metrics) / len(metrics)
+        avg_normalized_ssim = sum(metric[2] for metric in metrics) / len(metrics)
+        return avg_total_loss, avg_normalized_rmse, avg_normalized_psnr, avg_normalized_ssim
 
     def val_epoch(self, epoch):
         self.model.eval()
         total_losses = []
-
+        metrics = []
         with torch.no_grad():
             for input, target in self.val_loader:
                 input = input.unsqueeze(1).to(self.device)
                 target = target.unsqueeze(1).to(self.device)
-
                 predict = self.model(input)
-
                 loss = self.loss_fn(predict, target)
-                self.writer.add_scalar('val total loss', loss, epoch)
-
+                metrics.append(self.evaluation_metrics(predict, target))
                 total_losses.append(loss.item())
         avg_total_loss = sum(total_losses[-len(self.val_loader):]) / len(self.val_loader)
-        return avg_total_loss
+        avg_normalized_rmse = sum(metric[0] for metric in metrics) / len(metrics)
+        avg_normalized_psnr = sum(metric[1] for metric in metrics) / len(metrics)
+        avg_normalized_ssim = sum(metric[2] for metric in metrics) / len(metrics)
+        return avg_total_loss, avg_normalized_rmse, avg_normalized_psnr, avg_normalized_ssim
 
     def extraction_epoch(self):
         self.model.eval()
@@ -308,12 +313,11 @@ class Trainer:
         np.savez(f'./result/extraction/{self.stage}/{self.loss_method}_model_input_val.npz', input_val)
         np.savetxt(f'./result/extraction/{self.stage}/logs/loss_output_val_{self.loss_method}_{self.stage}.txt', losses_val)
         avg_loss_val = sum(losses_val) / len(losses_val)
-        self.metrics_process(metrics_train, metrics_val)
+        nrmse, psnr, ssim = self.metrics_process(metrics_train, metrics_val)
 
-        train_data = [input_train, ]
         data_compose(self.model_parameters[0], [input_train, result_train], [input_val, result_val])
 
-        return avg_loss_train, avg_loss_val
+        return (avg_loss_train, avg_loss_val), nrmse, psnr, ssim
 
     def data_extraction(self):
         path = f'./pretrained_model/{self.loss_method}/{self.stage}/model_checkpoint_{self.check_point}_epoch.pth'
@@ -321,23 +325,17 @@ class Trainer:
         print(f'Weight loaded from {path}')
         state_dict = pretrained_information['weight']
         self.load_weights(state_dict)
-        self.train_losses = pretrained_information['losses_train']
-        self.val_losses = pretrained_information['losses_val']
+        self.train_metrics = pretrained_information['metrics_train']
+        self.val_metrics = pretrained_information['metrics_val']
+        self.train_losses = [metric[0] for metric in self.train_metrics]
+        self.val_losses = [metric[0] for metric in self.val_metrics]
 
         print(f'-------Weight Loaded From {self.check_point} epoch-------')
-        loss = self.extraction_epoch()
-        print(f'Average loss is {loss}')
+        metric = self.extraction_epoch()
+        print(f'Average loss: {metric[0]}, Average NRMSE: {metric[1]}, Average PSNR: {metric[2]}, Average SSIM: {metric[3]},')
 
-    def model_checkpoint_save(self, epoch, losses_train, losses_val):
+    def model_checkpoint_save(self, epoch, metrics_train, metrics_val):
         os.makedirs(f'./weight/{self.NUM_GPU}_GPU/{self.stage}', exist_ok=True)
-        with open(f'./weight/{self.NUM_GPU}_GPU/{self.stage}/readme.txt', 'w') as file:
-            file.write(f"MODEL: {self.model_name}\n")
-            file.write(f"LOSS METHOD: {self.loss_method}\n")
-            file.write(f"BATCH SIZE: {self.batch_size}\n")
-            file.write(f"IF NORMALIZED: TRAIN-{self.train_norm} / VAL-{self.val_norm}\n")
-            file.write('--------------------------------------------------------------\n')
-            file.write(f"LOSS OF {epoch + 1} EPOCH: \nTRAIN LOSS: {losses_train[epoch]}\nVAL LOSS: {losses_val[epoch]}\n")
-            file.write('--------------------------------------------------------------\n')
         # Save model state_dict, ensure 'module.' prefix is handled
         if isinstance(self.model, nn.DataParallel):
             # Save the model without 'module.' prefix
@@ -346,12 +344,16 @@ class Trainer:
             model_state_dict = self.model.state_dict()
         torch.save({'weight': model_state_dict,
                     'epoch': epoch,
-                    'losses_train': losses_train,
-                    'losses_val': losses_val,
+                    'metrics_train': metrics_train, # here metrics include (loss, nrmse, psnr, ssim)
+                    'metrics_val': metrics_val,
                     'stage': self.stage,
                     'lr': self.lr
                     },
                    f'./weight/{self.NUM_GPU}_GPU/{self.stage}/model_checkpoint_{epoch + 1}_epoch.pth')
+        wandb.save(f'./weight/{self.NUM_GPU}_GPU/{self.stage}/model_checkpoint_{epoch + 1}_epoch.pth', 
+                   base_path=f'./weight/{self.NUM_GPU}_GPU/{self.stage}',
+                   policy='live'
+                   )
         print('-------Model Saved-------')
 
     def train(self):
@@ -360,34 +362,65 @@ class Trainer:
             state_dict = pretrained_information['weight']
             self.load_weights(state_dict)
             pretrained_epoch = pretrained_information['epoch']
-            self.train_losses = pretrained_information['losses_train']
-            self.val_losses = pretrained_information['losses_val']
+            self.train_metrics = pretrained_information['metrics_train']
+            self.val_metrics = pretrained_information['metrics_val']
             print(f'-------Weight Loaded From {self.stage}/{self.check_point} epoch-------')
             for epoch in range(self.epochs):
-                loss_train = self.train_epoch(epoch + 1 + self.check_point)
-                loss_val = self.val_epoch(epoch + 1 + self.check_point)
-                self.train_losses.append(loss_train)
-                self.val_losses.append(loss_val)
+                metric_train = self.train_epoch(epoch + 1 + self.check_point)
+                metric_val = self.val_epoch(epoch + 1 + self.check_point)
+                self.train_metrics.append(metric_train)
+                self.val_metrics.append(metric_val)
+                wandb.log(
+                        {
+                            'Present Epoch': pretrained_epoch + epoch + 2,
+                            'Total Epoch': self.epochs + pretrained_epoch + 1,
+                            'Train Total Loss': round(metric_train[0],6),
+                            'Val Total Loss': round(metric_val[0],6),
+                            'Train Total NRMSE': round(metric_train[1],6),
+                            'Val Total NRMSE': round(metric_val[1],6),
+                            'Train Total PSNR': round(metric_train[2],6),
+                            'Val Total PSNR': round(metric_val[2],6),
+                            'Train Total SSIM': round(metric_train[3],6),
+                            'Val Total SSIM': round(metric_val[3],6)
+                        }
+                    )
                 if (epoch + 1) % 10 == 0:
                     print(f"Epoch {pretrained_epoch + epoch + 2}/{self.epochs + pretrained_epoch + 1}\n"
-                          f"Train Total Loss: {loss_train:.6f}\n"
-                          f"Val Total Loss: {loss_val:.6f}\n-----------------------")
+                          f"Train:  Loss - {metric_train[0]:.6f}| NRMSE - {metric_train[1]} | PSNR - {metric_train[2]}  | SSIM - {metric_train[3]}\n"
+                          f"Val:    Loss - {metric_val[0]:.6f}  | NRMSE - {metric_val[1]}   | PSNR - {metric_val[2]}    | SSIM - {metric_val[3]}\n"
+                          '------------------------------------------------------------------------------------------------------------------------')
                 if (epoch + 1) % 20 == 0:
-                    self.model_checkpoint_save(epoch + self.check_point, self.train_losses, self.val_losses)
+                    self.model_checkpoint_save(epoch + self.check_point, self.train_metrics, self.val_metrics)
+
         else:
             print('-------Train From Beginning-------')
             for epoch in range(self.epochs):
-                loss_train = self.train_epoch(epoch + 1)
-                loss_val = self.val_epoch(epoch + 1)
-                self.train_losses.append(loss_train)
-                self.val_losses.append(loss_val)
+                metric_train = self.train_epoch(epoch + 1)
+                metric_val = self.val_epoch(epoch + 1)
+                self.train_metrics.append(metric_train)
+                self.val_metrics.append(metric_val)
+                wandb.log(
+                        {
+                            'Present Epoch': epoch + 1,
+                            'Total Epoch': self.epochs,
+                            'Train Total Loss': round(metric_train[0],6),
+                            'Val Total Loss': round(metric_val[0],6),
+                            'Train Total NRMSE': round(metric_train[1],6),
+                            'Val Total NRMSE': round(metric_val[1],6),
+                            'Train Total PSNR': round(metric_train[2],6),
+                            'Val Total PSNR': round(metric_val[2],6),
+                            'Train Total SSIM': round(metric_train[3],6),
+                            'Val Total SSIM': round(metric_val[3],6)
+                        }
+                    )
                 if (epoch + 1) % 10 == 0:
-                    print(f"Epoch {epoch + 1}/{self.epochs}\nTrain Total Loss: {loss_train:.6f}\n"
-                          f"Val Total Loss: {loss_val:.6f}\n-----------------------")
+                    print(f"Epoch {epoch + 1}/{self.epochs}\n"
+                          f"Train:  Loss - {metric_train[0]:.6f}| NRMSE - {metric_train[1]} | PSNR - {metric_train[2]}  | SSIM - {metric_train[3]}\n"
+                          f"Val:    Loss - {metric_val[0]:.6f}  | NRMSE - {metric_val[1]}   | PSNR - {metric_val[2]}    | SSIM - {metric_val[3]}\n"
+                          "------------------------------------------------------------------------------------------------------------------------") 
                 if (epoch + 1) % 20 == 0:
-                    self.model_checkpoint_save(epoch, self.train_losses, self.val_losses)
+                    self.model_checkpoint_save(epoch, self.train_metrics, self.val_metrics)
         print('-------Training Complete-------')
-        self.writer.close()
 
     def data_compose(self, input, predict):
         item = input.squeeze().shape[1] / 148
@@ -402,6 +435,7 @@ class Trainer:
         composed_data = np.transpose(composed_data, (1, 0, 2))
         return composed_data
 
+    # The following code is not up to date and will be updated in the future, DO NOT use the following function
     def overall_infer(self):
         pretrained_information_2_4 = torch.load(f'/root/autodl-tmp/Projection_predict/weight/{self.NUM_GPU}_GPU/2-4/model_checkpoint_300_epoch.pth', map_location=self.device)
         pretrained_information_4_8 = torch.load(f'/root/autodl-tmp/Projection_predict/weight/{self.NUM_GPU}_GPU/4-8/model_checkpoint_300_epoch.pth', map_location=self.device)

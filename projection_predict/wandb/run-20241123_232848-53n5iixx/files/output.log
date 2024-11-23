@@ -1,0 +1,30 @@
+/home/mrb2/miniconda3/envs/p01/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrb2/miniconda3/envs/p01/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loaded training data from: /home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_train_data_16_angles_padded.npz
+Loaded val data from: /home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_val_data_16_angles_padded.npz
+Train data information:
+Caution: Max value of input data is 46.328514099121094, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Caution: Max value of input data is 40.22502899169922, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Data not shuffled
+/home/mrb2/experiments/graduation_project/p01_code/projection_predict/trainer.py:324: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  pretrained_information = torch.load(path, map_location=self.device)
+Traceback (most recent call last):
+  File "/home/mrb2/experiments/graduation_project/p01_code/projection_predict/main.py", line 62, in <module>
+    main()
+  File "/home/mrb2/experiments/graduation_project/p01_code/projection_predict/main.py", line 54, in main
+    model_extract.data_extraction()
+  File "/home/mrb2/experiments/graduation_project/p01_code/projection_predict/trainer.py", line 324, in data_extraction
+    pretrained_information = torch.load(path, map_location=self.device)
+  File "/home/mrb2/miniconda3/envs/p01/lib/python3.10/site-packages/torch/serialization.py", line 1319, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/mrb2/miniconda3/envs/p01/lib/python3.10/site-packages/torch/serialization.py", line 659, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/mrb2/miniconda3/envs/p01/lib/python3.10/site-packages/torch/serialization.py", line 640, in __init__
+    super().__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: './pretrained_model/Perceptual/8-16/model_checkpoint_0_epoch.pth'

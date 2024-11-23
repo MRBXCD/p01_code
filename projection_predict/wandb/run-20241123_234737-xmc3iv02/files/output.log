@@ -1,0 +1,19 @@
+/home/mrb2/miniconda3/envs/p01/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrb2/miniconda3/envs/p01/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loaded training data from: /home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_train_data_16_angles_padded.npz
+Loaded val data from: /home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_val_data_16_angles_padded.npz
+Train data information:
+Caution: Max value of input data is 46.328514099121094, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Caution: Max value of input data is 40.22502899169922, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Data shuffled
+-------Train From Beginning-------
+Epoch 10/200
+Train: Loss - 37.605192 | NRMSE - 0.09308102012800827 | PSNR - 20.72547984675339 | SSIM - 0.048244511027780136
+Val:    Loss - 39.898468 | NRMSE - 0.09325678130132344 | PSNR - 20.63429576331555 | SSIM - 0.004074415381036449
+------------------------------------------------------------------------------------------------------------------------
