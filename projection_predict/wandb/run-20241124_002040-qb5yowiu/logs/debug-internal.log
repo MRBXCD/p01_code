@@ -1,0 +1,10 @@
+{"time":"2024-11-24T00:20:40.096126281+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-24T00:20:40.096141791+08:00","level":"INFO","msg":"created symlink","path":"/home/mrb2/experiments/graduation_project/p01_code/projection_predict/wandb/run-20241124_002040-qb5yowiu/logs/debug-core.log"}
+{"time":"2024-11-24T00:20:40.197761623+08:00","level":"INFO","msg":"created new stream","id":"qb5yowiu"}
+{"time":"2024-11-24T00:20:40.197794003+08:00","level":"INFO","msg":"stream: started","id":"qb5yowiu"}
+{"time":"2024-11-24T00:20:40.197826574+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"qb5yowiu"}
+{"time":"2024-11-24T00:20:40.197876466+08:00","level":"INFO","msg":"handler: started","stream_id":"qb5yowiu"}
+{"time":"2024-11-24T00:20:40.197845055+08:00","level":"INFO","msg":"sender: started","stream_id":"qb5yowiu"}
+{"time":"2024-11-24T00:20:41.097626086+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-24T00:21:12.324504294+08:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/qb5yowiu/file_stream"}
+{"time":"2024-11-24T00:21:12.324604746+08:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/CBCT-Reconstruction/projection-domain-dl/qb5yowiu/file_stream: {\"error\":\"run projection-domain-dl/qb5yowiu not found while streaming file\"}"}

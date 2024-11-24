@@ -1,5 +1,6 @@
 import wandb
 import skimage.metrics as sk
+from sklearn.metrics import root_mean_squared_error as rmse
 import numpy as np
 import torch
 from matplotlib import pyplot as plt
@@ -35,7 +36,6 @@ class Trainer:
         self.lr = params.lr
         self.epochs = params.epochs
         self.device = params.device
-        self.mse_loss = nn.MSELoss()
         self.if_load_weight = params.if_load_weight
         self.check_point = params.check_point
         self.stage = params.stage
@@ -45,6 +45,10 @@ class Trainer:
         # self.loss_ssim = SSIM(win_size=11, win_sigma=1.5, data_range=1, size_average=True, channel=1)
         if self.loss_method == 'Perceptual':
             self.loss_fn = PerceptualLoss().to(self.device)
+        elif self.loss_method == 'L1':
+            self.loss_fn = nn.L1Loss()
+        elif self.loss_method == 'MSE':
+            self.loss_fn = nn.MSELoss()
 
         self.if_extraction = params.if_extraction
 
@@ -141,10 +145,11 @@ class Trainer:
     def evaluation_metrics(self, predict, target):
         predict = predict.detach().squeeze().cpu().numpy()
         target = target.detach().squeeze().cpu().numpy()
-        normalized_rmse = sk.normalized_root_mse(target, predict, normalization='min-max')
+        # normalized_rmse = sk.normalized_root_mse(target, predict, normalization='min-max')
+        root_mse = rmse(target.flatten(), predict.flatten())
         psnr = sk.peak_signal_noise_ratio(target, predict, data_range=np.max(target) - np.min(target))
         ssim = sk.structural_similarity(target, predict, data_range=np.max(target) - np.min(target))
-        return (normalized_rmse, psnr, ssim)
+        return (root_mse, psnr, ssim)
 
     def metrics_process(self, train_metrics, val_metrics):
         train_metrics = np.array(train_metrics)
@@ -163,7 +168,7 @@ class Trainer:
         if self.if_extraction:
             with open(f'./save_for_paper/{self.stage}_metrics.txt', 'w') as file:
                 file.write("train/val\n")
-                file.write(f"avg_nrmse:{avg_nrmse_train, avg_nrmse_val}\n")
+                file.write(f"avg_rmse:{avg_nrmse_train, avg_nrmse_val}\n")
                 file.write(f"avg_psnr:{avg_psnr_train, avg_psnr_val}\n")
                 file.write(f"avg_ssim:{avg_ssim_train, avg_ssim_val}\n")
             return (avg_nrmse_train, avg_nrmse_val), (avg_psnr_train, avg_psnr_val), (avg_ssim_train, avg_ssim_val)
@@ -332,7 +337,7 @@ class Trainer:
 
         print(f'-------Weight Loaded From {self.check_point} epoch-------')
         metric = self.extraction_epoch()
-        print(f'Average loss: {metric[0]}, Average NRMSE: {metric[1]}, Average PSNR: {metric[2]}, Average SSIM: {metric[3]},')
+        print(f'Average loss: {metric[0]}, Average RMSE: {metric[1]}, Average PSNR: {metric[2]}, Average SSIM: {metric[3]},')
 
     def model_checkpoint_save(self, epoch, metrics_train, metrics_val):
         os.makedirs(f'./weight/{self.NUM_GPU}_GPU/{self.stage}', exist_ok=True)
@@ -376,8 +381,8 @@ class Trainer:
                             'Total Epoch': self.epochs + pretrained_epoch + 1,
                             'Train Total Loss': round(metric_train[0],6),
                             'Val Total Loss': round(metric_val[0],6),
-                            'Train Total NRMSE': round(metric_train[1],6),
-                            'Val Total NRMSE': round(metric_val[1],6),
+                            'Train Total RMSE': round(metric_train[1],6),
+                            'Val Total RMSE': round(metric_val[1],6),
                             'Train Total PSNR': round(metric_train[2],6),
                             'Val Total PSNR': round(metric_val[2],6),
                             'Train Total SSIM': round(metric_train[3],6),
@@ -386,8 +391,8 @@ class Trainer:
                     )
                 if (epoch + 1) % 10 == 0:
                     print(f"Epoch {pretrained_epoch + epoch + 2}/{self.epochs + pretrained_epoch + 1}\n"
-                          f"Train:  Loss - {metric_train[0]:.6f}| NRMSE - {metric_train[1]} | PSNR - {metric_train[2]}  | SSIM - {metric_train[3]}\n"
-                          f"Val:    Loss - {metric_val[0]:.6f}  | NRMSE - {metric_val[1]}   | PSNR - {metric_val[2]}    | SSIM - {metric_val[3]}\n"
+                          f"Train:  Loss - {metric_train[0]:.6f}    | RMSE - {metric_train[1]:.6f}  | PSNR - {metric_train[2]:.6f}      | SSIM - {metric_train[3]:.6f}\n"
+                          f"Val:    Loss - {metric_val[0]:.6f}      | RMSE - {metric_val[1]:.6f}    | PSNR - {metric_val[2]:.6f}        | SSIM - {metric_val[3]:.6f}\n"
                           '------------------------------------------------------------------------------------------------------------------------')
                 if (epoch + 1) % 20 == 0:
                     self.model_checkpoint_save(epoch + self.check_point, self.train_metrics, self.val_metrics)
@@ -405,8 +410,8 @@ class Trainer:
                             'Total Epoch': self.epochs,
                             'Train Total Loss': round(metric_train[0],6),
                             'Val Total Loss': round(metric_val[0],6),
-                            'Train Total NRMSE': round(metric_train[1],6),
-                            'Val Total NRMSE': round(metric_val[1],6),
+                            'Train Total RMSE': round(metric_train[1],6),
+                            'Val Total RMSE': round(metric_val[1],6),
                             'Train Total PSNR': round(metric_train[2],6),
                             'Val Total PSNR': round(metric_val[2],6),
                             'Train Total SSIM': round(metric_train[3],6),
@@ -415,8 +420,8 @@ class Trainer:
                     )
                 if (epoch + 1) % 10 == 0:
                     print(f"Epoch {epoch + 1}/{self.epochs}\n"
-                          f"Train:  Loss - {metric_train[0]:.6f}| NRMSE - {metric_train[1]} | PSNR - {metric_train[2]}  | SSIM - {metric_train[3]}\n"
-                          f"Val:    Loss - {metric_val[0]:.6f}  | NRMSE - {metric_val[1]}   | PSNR - {metric_val[2]}    | SSIM - {metric_val[3]}\n"
+                          f"Train:  Loss - {metric_train[0]:.6f}    | RMSE - {metric_train[1]:.6f}  | PSNR - {metric_train[2]:.6f}      | SSIM - {metric_train[3]:.6f}\n"
+                          f"Val:    Loss - {metric_val[0]:.6f}      | RMSE - {metric_val[1]:.6f}    | PSNR - {metric_val[2]:.6f}        | SSIM - {metric_val[3]:.6f}\n"
                           "------------------------------------------------------------------------------------------------------------------------") 
                 if (epoch + 1) % 20 == 0:
                     self.model_checkpoint_save(epoch, self.train_metrics, self.val_metrics)

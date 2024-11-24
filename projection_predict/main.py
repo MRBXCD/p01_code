@@ -31,8 +31,8 @@ def main():
                         help='which stage the model is training')
     parser.add_argument('--norm', type=bool, default=False,
                         help='if set loss as ssim, choose true')      
-    parser.add_argument('--loss_method', type=str, default='Perceptual',
-                        help='how to calc loss: MSE or MSE+SSIM or Perceptual')       
+    parser.add_argument('--loss_method', type=str, default='L1',
+                        help='how to calc loss: MSE or MSE+SSIM or Perceptual or L1')       
     parser.add_argument('--if_extraction', type=bool, default=False, 
                         help='if extract the data.')   
     parser.add_argument('--if_infer', type=bool, default=False, 
@@ -44,7 +44,7 @@ def main():
 
     wandb.init(
         project='projection-domain-dl',
-        name='perceptual_loss',
+        name=params.loss_method,
         group='loss_method_exp',
         config=params,
         resume='allow',
