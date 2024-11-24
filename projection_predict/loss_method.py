@@ -40,7 +40,7 @@ class PerceptualLoss(nn.Module):
 
 
 class CombinedLoss(nn.Module):
-    def __init__(self, lambda_l1=1.0, lambda_perceptual=0.3):
+    def __init__(self, lambda_l1=1.0, lambda_perceptual=0.1):
         super(CombinedLoss, self).__init__()
         self.l1_loss = nn.L1Loss()
         self.perceptual_loss = PerceptualLoss()

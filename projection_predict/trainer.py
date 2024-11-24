@@ -11,6 +11,8 @@ from utils.utils import data_compose
 from loss_method import PerceptualLoss, CombinedLoss
 # from pytorch_msssim import ssim, ms_ssim, SSIM, MS_SSIM
 
+from models.attention_unet import AttU_Net
+from models.unetpp import Unetpp
 from models.model import UNet
 from models.model_mutihead import UNet3Head
 
@@ -35,6 +37,7 @@ class Trainer:
 
         self.if_infer = params.if_infer
         self.batch_size = params.batch_size
+        self.net = params.net
 
         self.lr = params.lr
         self.scheduler = params.scheduler
@@ -79,6 +82,13 @@ class Trainer:
         }
         self.model_parameters = hyper_parameters[self.stage]
 
+        if self.net == 'unet':
+            self.model = UNet()
+        elif self.net == 'unet++':
+            self.model = Unetpp()
+        elif self.net == 'atten_unet':
+            self.model = AttU_Net()
+        
         # Load train data
         self.data_stage = hyper_parameters[self.stage][1]
         self.train_input = os.path.join(self.data_path, f'Projection_train_data_{self.data_stage}_angles_padded.npz')
@@ -111,22 +121,13 @@ class Trainer:
             self.val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False, drop_last=False)
             print('Data not shuffled')
 
-        # self.data_show(self.train_loader, 'train')
-        # self.data_show(self.val_loader, 'val')
 
-        if self.if_infer:
-            self.model1 = UNet()
-            self.model2 = UNet()
-            self.model3 = UNet()
-            self.model4 = UNet()
-        else:
-            self.model = UNet()
-            self.model_name = 'UNet()'
-            self.model.to(self.device)
-            # If more than one GPU is available, use DataParallel
-            if self.NUM_GPU > 1:
-                print(f"Using {self.NUM_GPU} GPUs for training")
-                self.model = nn.DataParallel(self.model)
+        self.model_name = self.net
+        self.model.to(self.device)
+        # If more than one GPU is available, use DataParallel
+        if self.NUM_GPU > 1:
+            print(f"Using {self.NUM_GPU} GPUs for training")
+            self.model = nn.DataParallel(self.model)
 
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
         self.early_stopping = EarlyStopping(patience=params.patience, verbose=True)

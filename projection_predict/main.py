@@ -16,7 +16,8 @@ def main():
     parser.add_argument('--exp_id', type=str, default='EXP',
                         help='index of experiment')
     parser.add_argument('--data_path', type=str, help='path to data folder')
-
+    parser.add_argument('--net', type=str, default='unet',
+                        help='unet/unet++/atten_unet')
     parser.add_argument('--device', type=str, default='cuda',
                         help='cuda/cpu')
     parser.add_argument('--epochs', type=int, default=250,
