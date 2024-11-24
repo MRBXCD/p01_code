@@ -1,0 +1,9 @@
+{"time":"2024-11-24T16:03:34.259425751+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-24T16:03:34.259455902+08:00","level":"INFO","msg":"created symlink","path":"/home/mrb2/experiments/graduation_project/p01_code/projection_predict/wandb/run-20241124_160334-zaxw59h0/logs/debug-core.log"}
+{"time":"2024-11-24T16:03:34.366336288+08:00","level":"INFO","msg":"created new stream","id":"zaxw59h0"}
+{"time":"2024-11-24T16:03:34.366367229+08:00","level":"INFO","msg":"stream: started","id":"zaxw59h0"}
+{"time":"2024-11-24T16:03:34.366550343+08:00","level":"INFO","msg":"handler: started","stream_id":"zaxw59h0"}
+{"time":"2024-11-24T16:03:34.366791788+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"zaxw59h0"}
+{"time":"2024-11-24T16:03:34.366800359+08:00","level":"INFO","msg":"sender: started","stream_id":"zaxw59h0"}
+{"time":"2024-11-24T16:03:35.311487332+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-24T16:12:51.549370333+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/zaxw59h0/file_stream\": EOF"}

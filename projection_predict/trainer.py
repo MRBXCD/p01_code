@@ -415,7 +415,7 @@ class Trainer:
                     print("lr = {:.10f}".format(self.optimizer.param_groups[0]['lr']))
                     # self.model_checkpoint_save(epoch + self.check_point, self.train_metrics, self.val_metrics)
 
-                self.early_stopping(metric_val[0], self.model, self.exp_id, self.loss_method)
+                self.early_stopping(metric_val[0], self.model, self.exp_id, self.net)
 
                 if self.early_stopping.early_stop:
                     print("Early stopped, training terminated")
@@ -451,7 +451,7 @@ class Trainer:
                     print("lr = {:.10f}".format(self.optimizer.param_groups[0]['lr']))
                     # self.model_checkpoint_save(epoch, self.train_metrics, self.val_metrics)
                 
-                self.early_stopping(metric_val[0], self.model, self.exp_id, self.loss_method)
+                self.early_stopping(metric_val[0], self.model, self.exp_id, self.net)
 
                 if self.early_stopping.early_stop:
                     print("Early stopped, training terminated")

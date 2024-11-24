@@ -19,7 +19,7 @@ python main.py \
     --stage 8-16\
     --loss_method $loss_method\
     --dropout 0.1\
-    --wandb disabled
+    --wandb online
 
 echo '====================================================================================================================='
 done
