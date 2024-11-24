@@ -1,0 +1,126 @@
+/root/miniconda3/envs/p01/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/root/miniconda3/envs/p01/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Loaded training data from: /root/autodl-tmp/shared_data/projection/raw/Projection_train_data_16_angles_padded.npz
+Loaded val data from: /root/autodl-tmp/shared_data/projection/raw/Projection_val_data_16_angles_padded.npz
+Train data information:
+Caution: Max value of input data is 46.328514099121094, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Caution: Max value of input data is 40.22502899169922, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Data shuffled
+-------Train From Beginning-------
+Val loss decrease: (inf --> 70.175384), Saving checkpoint.
+Val loss decrease: (70.175384 --> 61.134179), Saving checkpoint.
+Val loss decrease: (61.134179 --> 56.790279), Saving checkpoint.
+Val loss decrease: (56.790279 --> 51.702539), Saving checkpoint.
+Val loss decrease: (51.702539 --> 50.571138), Saving checkpoint.
+Val loss decrease: (50.571138 --> 47.566443), Saving checkpoint.
+Early stop counting: 1/10
+Early stop counting: 2/10
+Val loss decrease: (47.566443 --> 43.726575), Saving checkpoint.
+Epoch 10/200
+Train:  Loss - 42.870110  | RMSE - 3.594279  | PSNR - 19.627624  | SSIM - -0.100521
+Val:    Loss - 46.143980  | RMSE - 3.685142  | PSNR - 19.467895  | SSIM - -0.145866
+------------------------------------------------------------------------------------------------------------------------
+Early stop counting: 1/10
+Val loss decrease: (43.726575 --> 43.604990), Saving checkpoint.
+Val loss decrease: (43.604990 --> 42.344853), Saving checkpoint.
+Early stop counting: 1/10
+Val loss decrease: (42.344853 --> 40.982971), Saving checkpoint.
+Val loss decrease: (40.982971 --> 40.773042), Saving checkpoint.
+Val loss decrease: (40.773042 --> 40.311954), Saving checkpoint.
+Val loss decrease: (40.311954 --> 39.959538), Saving checkpoint.
+Val loss decrease: (39.959538 --> 38.924386), Saving checkpoint.
+Early stop counting: 1/10
+Epoch 20/200
+Train:  Loss - 33.242707  | RMSE - 2.987757  | PSNR - 21.113423  | SSIM - 0.034941
+Val:    Loss - 37.928912  | RMSE - 2.877611  | PSNR - 21.591228  | SSIM - 0.038784
+------------------------------------------------------------------------------------------------------------------------
+lr = 0.0000883940
+Val loss decrease: (38.924386 --> 37.928912), Saving checkpoint.
+Val loss decrease: (37.928912 --> 37.909080), Saving checkpoint.
+Val loss decrease: (37.909080 --> 37.455494), Saving checkpoint.
+Early stop counting: 1/10
+Early stop counting: 2/10
+Val loss decrease: (37.455494 --> 36.624345), Saving checkpoint.
+Val loss decrease: (36.624345 --> 36.010418), Saving checkpoint.
+Early stop counting: 1/10
+Early stop counting: 2/10
+Early stop counting: 3/10
+Epoch 30/200
+Train:  Loss - 27.390303  | RMSE - 2.441070  | PSNR - 22.927285  | SSIM - 0.201314
+Val:    Loss - 35.895306  | RMSE - 2.468088  | PSNR - 22.950579  | SSIM - 0.155454
+------------------------------------------------------------------------------------------------------------------------
+Val loss decrease: (36.010418 --> 35.895306), Saving checkpoint.
+Val loss decrease: (35.895306 --> 35.863467), Saving checkpoint.
+Early stop counting: 1/10
+Val loss decrease: (35.863467 --> 35.296109), Saving checkpoint.
+Val loss decrease: (35.296109 --> 34.611500), Saving checkpoint.
+Val loss decrease: (34.611500 --> 33.846504), Saving checkpoint.
+Early stop counting: 1/10
+Early stop counting: 2/10
+Early stop counting: 3/10
+Val loss decrease: (33.846504 --> 33.072943), Saving checkpoint.
+Epoch 40/200
+Train:  Loss - 23.593019  | RMSE - 1.974109  | PSNR - 24.860138  | SSIM - 0.364811
+Val:    Loss - 34.146223  | RMSE - 2.091539  | PSNR - 24.043434  | SSIM - 0.311183
+------------------------------------------------------------------------------------------------------------------------
+lr = 0.0000781364
+Early stop counting: 1/10
+Early stop counting: 2/10
+Early stop counting: 3/10
+Early stop counting: 4/10
+Early stop counting: 5/10
+Early stop counting: 6/10
+Early stop counting: 7/10
+Early stop counting: 8/10
+Early stop counting: 9/10
+Val loss decrease: (33.072943 --> 32.937196), Saving checkpoint.
+Epoch 50/200
+Train:  Loss - 21.245600  | RMSE - 1.610180  | PSNR - 26.629752  | SSIM - 0.497805
+Val:    Loss - 33.110712  | RMSE - 1.723136  | PSNR - 25.932326  | SSIM - 0.471065
+------------------------------------------------------------------------------------------------------------------------
+Early stop counting: 1/10
+Val loss decrease: (32.937196 --> 32.569964), Saving checkpoint.
+Early stop counting: 1/10
+Early stop counting: 2/10
+Val loss decrease: (32.569964 --> 32.120220), Saving checkpoint.
+Early stop counting: 1/10
+Early stop counting: 2/10
+Early stop counting: 3/10
+Early stop counting: 4/10
+Early stop counting: 5/10
+Epoch 60/200
+Train:  Loss - 19.352203  | RMSE - 1.299562  | PSNR - 28.541004  | SSIM - 0.634895
+Val:    Loss - 32.627181  | RMSE - 1.449556  | PSNR - 27.530522  | SSIM - 0.588335
+------------------------------------------------------------------------------------------------------------------------
+lr = 0.0000690705
+Early stop counting: 6/10
+Early stop counting: 7/10
+Early stop counting: 8/10
+Early stop counting: 9/10
+Val loss decrease: (32.120220 --> 32.026284), Saving checkpoint.
+Early stop counting: 1/10
+Early stop counting: 2/10
+Early stop counting: 3/10
+Val loss decrease: (32.026284 --> 31.975629), Saving checkpoint.
+Early stop counting: 1/10
+Epoch 70/200
+Train:  Loss - 18.278276  | RMSE - 1.086784  | PSNR - 30.052093  | SSIM - 0.738384
+Val:    Loss - 32.128979  | RMSE - 1.316788  | PSNR - 28.572460  | SSIM - 0.687028
+------------------------------------------------------------------------------------------------------------------------
+Early stop counting: 2/10
+Early stop counting: 3/10
+Early stop counting: 4/10
+Early stop counting: 5/10
+Early stop counting: 6/10
+Early stop counting: 7/10
+Early stop counting: 8/10
+Early stop counting: 9/10
+Early stop counting: 10/10
+Early stopped, training terminated
+-------Training Complete-------

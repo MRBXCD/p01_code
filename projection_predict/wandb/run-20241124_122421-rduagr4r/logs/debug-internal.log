@@ -1,0 +1,18 @@
+{"time":"2024-11-24T12:24:21.87838897+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-24T12:24:21.878404212+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241124_122421-rduagr4r/logs/debug-core.log"}
+{"time":"2024-11-24T12:24:21.983302199+08:00","level":"INFO","msg":"created new stream","id":"rduagr4r"}
+{"time":"2024-11-24T12:24:21.983347304+08:00","level":"INFO","msg":"stream: started","id":"rduagr4r"}
+{"time":"2024-11-24T12:24:21.983388098+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"rduagr4r"}
+{"time":"2024-11-24T12:24:21.983417691+08:00","level":"INFO","msg":"sender: started","stream_id":"rduagr4r"}
+{"time":"2024-11-24T12:24:21.983498319+08:00","level":"INFO","msg":"handler: started","stream_id":"rduagr4r"}
+{"time":"2024-11-24T12:24:23.258570898+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-24T12:42:14.838941402+08:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/rduagr4r/file_stream"}
+{"time":"2024-11-24T12:49:55.752617085+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-24T12:49:55.753196664+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-24T12:49:56.753154575+08:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"saving job artifact","runtime_seconds":0.380864975},{"desc":"uploading wandb-summary.json","runtime_seconds":0.363946443,"progress":"354B/354B"},{"desc":"uploading config.yaml","runtime_seconds":0.035284871,"progress":"1.1KB/1.1KB"},{"desc":"uploading output.log","runtime_seconds":0.03527209,"progress":"6.8KB/6.8KB"}],"total_operations":4}}
+{"time":"2024-11-24T12:50:09.544863066+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-24T12:50:11.602985447+08:00","level":"INFO","msg":"stream: closing","id":"rduagr4r"}
+{"time":"2024-11-24T12:50:11.603013488+08:00","level":"INFO","msg":"handler: closed","stream_id":"rduagr4r"}
+{"time":"2024-11-24T12:50:11.603021949+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"rduagr4r"}
+{"time":"2024-11-24T12:50:11.603067081+08:00","level":"INFO","msg":"sender: closed","stream_id":"rduagr4r"}
+{"time":"2024-11-24T12:50:11.603114244+08:00","level":"INFO","msg":"stream: closed","id":"rduagr4r"}

@@ -1,0 +1,17 @@
+{"time":"2024-11-24T13:23:45.932809152+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-24T13:23:45.932833553+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241124_132345-srxi46r6/logs/debug-core.log"}
+{"time":"2024-11-24T13:23:46.038636839+08:00","level":"INFO","msg":"created new stream","id":"srxi46r6"}
+{"time":"2024-11-24T13:23:46.038683701+08:00","level":"INFO","msg":"stream: started","id":"srxi46r6"}
+{"time":"2024-11-24T13:23:46.038753634+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"srxi46r6"}
+{"time":"2024-11-24T13:23:46.038786736+08:00","level":"INFO","msg":"sender: started","stream_id":"srxi46r6"}
+{"time":"2024-11-24T13:23:46.038818807+08:00","level":"INFO","msg":"handler: started","stream_id":"srxi46r6"}
+{"time":"2024-11-24T13:23:47.355849946+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-24T13:55:28.989235711+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-24T13:55:28.989733616+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-24T13:55:29.947639448+08:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"saving job artifact","runtime_seconds":0.309043872},{"desc":"uploading wandb-summary.json","runtime_seconds":0.278849955,"progress":"355B/355B"}],"total_operations":2}}
+{"time":"2024-11-24T13:55:43.018824834+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-24T13:55:44.970760896+08:00","level":"INFO","msg":"stream: closing","id":"srxi46r6"}
+{"time":"2024-11-24T13:55:44.970781857+08:00","level":"INFO","msg":"handler: closed","stream_id":"srxi46r6"}
+{"time":"2024-11-24T13:55:44.970789637+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"srxi46r6"}
+{"time":"2024-11-24T13:55:44.970822858+08:00","level":"INFO","msg":"sender: closed","stream_id":"srxi46r6"}
+{"time":"2024-11-24T13:55:44.970877189+08:00","level":"INFO","msg":"stream: closed","id":"srxi46r6"}

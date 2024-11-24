@@ -1,0 +1,16 @@
+{"time":"2024-11-24T12:22:04.926209423+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-24T12:22:04.926224535+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241124_122204-vetdp8aj/logs/debug-core.log"}
+{"time":"2024-11-24T12:22:05.031977855+08:00","level":"INFO","msg":"created new stream","id":"vetdp8aj"}
+{"time":"2024-11-24T12:22:05.03202088+08:00","level":"INFO","msg":"stream: started","id":"vetdp8aj"}
+{"time":"2024-11-24T12:22:05.032056694+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"vetdp8aj"}
+{"time":"2024-11-24T12:22:05.032097039+08:00","level":"INFO","msg":"handler: started","stream_id":"vetdp8aj"}
+{"time":"2024-11-24T12:22:05.032129492+08:00","level":"INFO","msg":"sender: started","stream_id":"vetdp8aj"}
+{"time":"2024-11-24T12:22:06.457694479+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-24T12:22:27.319198714+08:00","level":"INFO","msg":"stream: closing","id":"vetdp8aj"}
+{"time":"2024-11-24T12:22:27.319237759+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-24T12:22:27.319681818+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-24T12:22:28.734632337+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-24T12:22:30.052041722+08:00","level":"INFO","msg":"handler: closed","stream_id":"vetdp8aj"}
+{"time":"2024-11-24T12:22:30.052101979+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"vetdp8aj"}
+{"time":"2024-11-24T12:22:30.052122881+08:00","level":"INFO","msg":"sender: closed","stream_id":"vetdp8aj"}
+{"time":"2024-11-24T12:22:30.052193849+08:00","level":"INFO","msg":"stream: closed","id":"vetdp8aj"}

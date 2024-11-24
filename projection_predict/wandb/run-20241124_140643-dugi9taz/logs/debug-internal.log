@@ -1,0 +1,17 @@
+{"time":"2024-11-24T14:06:43.46713516+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-24T14:06:43.467151511+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241124_140643-dugi9taz/logs/debug-core.log"}
+{"time":"2024-11-24T14:06:43.570493965+08:00","level":"INFO","msg":"created new stream","id":"dugi9taz"}
+{"time":"2024-11-24T14:06:43.570522287+08:00","level":"INFO","msg":"stream: started","id":"dugi9taz"}
+{"time":"2024-11-24T14:06:43.570592962+08:00","level":"INFO","msg":"sender: started","stream_id":"dugi9taz"}
+{"time":"2024-11-24T14:06:43.570578711+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"dugi9taz"}
+{"time":"2024-11-24T14:06:43.570640476+08:00","level":"INFO","msg":"handler: started","stream_id":"dugi9taz"}
+{"time":"2024-11-24T14:06:44.947111632+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-24T14:26:02.458878973+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-24T14:26:02.459409558+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-24T14:26:03.459351575+08:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"saving job artifact","runtime_seconds":0.314413346},{"desc":"uploading wandb-summary.json","runtime_seconds":0.275975399}],"total_operations":2}}
+{"time":"2024-11-24T14:26:16.976577185+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-24T14:26:18.840132322+08:00","level":"INFO","msg":"stream: closing","id":"dugi9taz"}
+{"time":"2024-11-24T14:26:18.840162633+08:00","level":"INFO","msg":"handler: closed","stream_id":"dugi9taz"}
+{"time":"2024-11-24T14:26:18.840173804+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"dugi9taz"}
+{"time":"2024-11-24T14:26:18.840241527+08:00","level":"INFO","msg":"sender: closed","stream_id":"dugi9taz"}
+{"time":"2024-11-24T14:26:18.840348802+08:00","level":"INFO","msg":"stream: closed","id":"dugi9taz"}

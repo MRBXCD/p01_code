@@ -1,0 +1,16 @@
+{"time":"2024-11-24T12:23:21.244762242+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-24T12:23:21.244778424+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241124_122321-asys11c5/logs/debug-core.log"}
+{"time":"2024-11-24T12:23:21.349085289+08:00","level":"INFO","msg":"created new stream","id":"asys11c5"}
+{"time":"2024-11-24T12:23:21.349122603+08:00","level":"INFO","msg":"stream: started","id":"asys11c5"}
+{"time":"2024-11-24T12:23:21.349160837+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"asys11c5"}
+{"time":"2024-11-24T12:23:21.349212362+08:00","level":"INFO","msg":"handler: started","stream_id":"asys11c5"}
+{"time":"2024-11-24T12:23:21.349265088+08:00","level":"INFO","msg":"sender: started","stream_id":"asys11c5"}
+{"time":"2024-11-24T12:23:22.677736903+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-24T12:23:43.186942423+08:00","level":"INFO","msg":"stream: closing","id":"asys11c5"}
+{"time":"2024-11-24T12:23:43.186994949+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-24T12:23:43.187476778+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-24T12:23:44.514962444+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-24T12:23:45.643469933+08:00","level":"INFO","msg":"handler: closed","stream_id":"asys11c5"}
+{"time":"2024-11-24T12:23:45.643506937+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"asys11c5"}
+{"time":"2024-11-24T12:23:45.643517518+08:00","level":"INFO","msg":"sender: closed","stream_id":"asys11c5"}
+{"time":"2024-11-24T12:23:45.643603436+08:00","level":"INFO","msg":"stream: closed","id":"asys11c5"}

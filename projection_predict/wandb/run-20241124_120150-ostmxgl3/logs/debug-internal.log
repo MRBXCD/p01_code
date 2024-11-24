@@ -1,0 +1,8 @@
+{"time":"2024-11-24T12:01:50.909435336+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-24T12:01:50.909453506+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241124_120150-ostmxgl3/logs/debug-core.log"}
+{"time":"2024-11-24T12:01:51.014158193+08:00","level":"INFO","msg":"created new stream","id":"ostmxgl3"}
+{"time":"2024-11-24T12:01:51.014189884+08:00","level":"INFO","msg":"stream: started","id":"ostmxgl3"}
+{"time":"2024-11-24T12:01:51.014273526+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"ostmxgl3"}
+{"time":"2024-11-24T12:01:51.014301096+08:00","level":"INFO","msg":"sender: started","stream_id":"ostmxgl3"}
+{"time":"2024-11-24T12:01:51.014379098+08:00","level":"INFO","msg":"handler: started","stream_id":"ostmxgl3"}
+{"time":"2024-11-24T12:01:52.368786376+08:00","level":"INFO","msg":"Starting system monitor"}

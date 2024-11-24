@@ -1,0 +1,16 @@
+{"time":"2024-11-24T11:59:03.656819098+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-24T11:59:03.656834108+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241124_115903-jpfixgyz/logs/debug-core.log"}
+{"time":"2024-11-24T11:59:03.761233012+08:00","level":"INFO","msg":"created new stream","id":"jpfixgyz"}
+{"time":"2024-11-24T11:59:03.761268003+08:00","level":"INFO","msg":"stream: started","id":"jpfixgyz"}
+{"time":"2024-11-24T11:59:03.761328094+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"jpfixgyz"}
+{"time":"2024-11-24T11:59:03.761363815+08:00","level":"INFO","msg":"sender: started","stream_id":"jpfixgyz"}
+{"time":"2024-11-24T11:59:03.761427336+08:00","level":"INFO","msg":"handler: started","stream_id":"jpfixgyz"}
+{"time":"2024-11-24T11:59:05.055637554+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-24T11:59:27.265800844+08:00","level":"INFO","msg":"stream: closing","id":"jpfixgyz"}
+{"time":"2024-11-24T11:59:27.265827854+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-24T11:59:27.26648719+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-24T11:59:31.164084724+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-24T11:59:32.279448335+08:00","level":"INFO","msg":"handler: closed","stream_id":"jpfixgyz"}
+{"time":"2024-11-24T11:59:32.279494467+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"jpfixgyz"}
+{"time":"2024-11-24T11:59:32.279541868+08:00","level":"INFO","msg":"sender: closed","stream_id":"jpfixgyz"}
+{"time":"2024-11-24T11:59:32.279587489+08:00","level":"INFO","msg":"stream: closed","id":"jpfixgyz"}

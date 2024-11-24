@@ -13,16 +13,32 @@ def main():
     np.random.seed(fix_seed)
 
     parser = argparse.ArgumentParser()
+    parser.add_argument('--exp_id', type=str, default='EXP',
+                        help='index of experiment')
+    parser.add_argument('--data_path', type=str, help='path to data folder')
+
     parser.add_argument('--device', type=str, default='cuda',
                         help='cuda/cpu')
     parser.add_argument('--epochs', type=int, default=250,
                         help='Number of training epochs.')
     parser.add_argument('--batch_size', type=int, default=8,
                         help='Batch size for training.')
+    
+    # Optimization settings
     parser.add_argument('--lr', type=float, default=1e-4,
                         help='Learning rate for the optimizer.')
-    parser.add_argument('--dropout', type=float, default=0, 
-                        help='dropout percent')  
+    parser.add_argument('--scheduler', type=bool, default=False,
+                        help='If using scheduler to adjust the learning rate')
+    parser.add_argument('--tmax', type=int, default=20,
+                        help='scheduler will adjust the learning rate every tmax epoch')
+    parser.add_argument('--dropout', type=float, default=0.1, 
+                        help='dropout percent') 
+    parser.add_argument('--early_stop', type=bool, default=False, 
+                        help='if activate early stop function')
+    parser.add_argument('--patience', type=int, default=10, 
+                        help='early stop patience')
+    
+    # Model save
     parser.add_argument('--if_load_weight', type=bool, default=False,
                         help='if load weight from pth file.')       
     parser.add_argument('--check_point', type=int, default=0,

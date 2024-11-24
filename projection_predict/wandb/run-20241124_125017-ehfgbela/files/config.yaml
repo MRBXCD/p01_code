@@ -1,0 +1,69 @@
+_wandb:
+    value:
+        cli_version: 0.18.7
+        m: []
+        python_version: 3.10.15
+        t:
+            "1":
+                - 1
+                - 5
+                - 41
+                - 53
+                - 55
+            "2":
+                - 1
+                - 5
+                - 41
+                - 53
+                - 55
+            "3":
+                - 2
+                - 3
+                - 13
+                - 16
+                - 23
+                - 55
+            "4": 3.10.15
+            "5": 0.18.7
+            "8":
+                - 5
+            "12": 0.18.7
+            "13": linux-x86_64
+batch_size:
+    value: 16
+check_point:
+    value: 0
+data_path:
+    value: /root/autodl-tmp/shared_data/projection/raw/
+device:
+    value: cuda
+dropout:
+    value: 0.1
+early_stop:
+    value: true
+epochs:
+    value: 200
+exp_id:
+    value: EXP_2024.11.1.5
+if_extraction:
+    value: false
+if_infer:
+    value: false
+if_load_weight:
+    value: false
+loss_method:
+    value: Perceptual
+lr:
+    value: 0.0001
+norm:
+    value: false
+patience:
+    value: 10
+scheduler:
+    value: true
+stage:
+    value: 8-16
+tmax:
+    value: 20
+wandb:
+    value: online

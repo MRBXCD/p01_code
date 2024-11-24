@@ -24,16 +24,24 @@ import os
 import torchvision.transforms.functional as F
 from collections import OrderedDict
 
+from utils.earlyStop import EarlyStopping
 
 class Trainer:
     def __init__(self, params):
+        self.exp_id = params.exp_id
         # Define model
         self.NUM_GPU = torch.cuda.device_count()
         os.makedirs(f'./weight/{self.NUM_GPU}_GPU', exist_ok=True)
 
         self.if_infer = params.if_infer
         self.batch_size = params.batch_size
+
         self.lr = params.lr
+        self.scheduler = params.scheduler
+        self.tmax = params.tmax
+
+        self.data_path = params.data_path
+
         self.epochs = params.epochs
         self.device = params.device
         self.if_load_weight = params.if_load_weight
@@ -49,6 +57,8 @@ class Trainer:
             self.loss_fn = nn.L1Loss()
         elif self.loss_method == 'MSE':
             self.loss_fn = nn.MSELoss()
+        elif self.loss_method == 'Combined_loss':
+            self.loss_fn = CombinedLoss().to(self.device)
 
         self.if_extraction = params.if_extraction
 
@@ -71,11 +81,13 @@ class Trainer:
 
         # Load train data
         self.data_stage = hyper_parameters[self.stage][1]
-        self.train_input = f'/home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_train_data_{self.data_stage}_angles_padded.npz'
+        self.train_input = os.path.join(self.data_path, f'Projection_train_data_{self.data_stage}_angles_padded.npz')
+        # self.train_input = f'/home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_train_data_{self.data_stage}_angles_padded.npz'
         print(f'Loaded training data from: {self.train_input}')
 
         # Load val data
-        self.val_input = f'/home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_val_data_{self.data_stage}_angles_padded.npz'
+        self.val_input = os.path.join(self.data_path, f'Projection_val_data_{self.data_stage}_angles_padded.npz')
+        # self.val_input = f'/home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_val_data_{self.data_stage}_angles_padded.npz'
         print(f'Loaded val data from: {self.val_input}')
 
         print('Train data information:')
@@ -111,12 +123,14 @@ class Trainer:
             self.model = UNet()
             self.model_name = 'UNet()'
             self.model.to(self.device)
-
             # If more than one GPU is available, use DataParallel
             if self.NUM_GPU > 1:
                 print(f"Using {self.NUM_GPU} GPUs for training")
                 self.model = nn.DataParallel(self.model)
 
+        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
+        self.early_stopping = EarlyStopping(patience=params.patience, verbose=True)
+        
     def load_weights(self, state_dict):
         """
         Load weights into the model, adjusting the state dictionary if the weights were trained on a multi-GPU setup.
@@ -222,17 +236,19 @@ class Trainer:
         self.model.train()
         total_losses = []
         metrics = []
-        optimizer = torch.optim.Adam(self.model.parameters(), lr=self.lr)
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(self.optimizer, T_max=self.tmax, eta_min=1e-7)
         for input, target in self.train_loader:
             input = input.unsqueeze(1).to(self.device)
             target = target.unsqueeze(1).to(self.device)
             predict = self.model(input)
             loss = self.loss_fn(predict, target)
             metrics.append(self.evaluation_metrics(predict, target))
-            optimizer.zero_grad()
+            self.optimizer.zero_grad()
             loss.backward()
-            optimizer.step()
+            self.optimizer.step()
             total_losses.append(loss.item())
+        if self.scheduler:
+            scheduler.step()
         avg_total_loss = sum(total_losses[-len(self.train_loader):]) / len(self.train_loader)
         avg_normalized_rmse = sum(metric[0] for metric in metrics) / len(metrics)
         avg_normalized_psnr = sum(metric[1] for metric in metrics) / len(metrics)
@@ -339,27 +355,27 @@ class Trainer:
         metric = self.extraction_epoch()
         print(f'Average loss: {metric[0]}, Average RMSE: {metric[1]}, Average PSNR: {metric[2]}, Average SSIM: {metric[3]},')
 
-    def model_checkpoint_save(self, epoch, metrics_train, metrics_val):
-        os.makedirs(f'./weight/{self.NUM_GPU}_GPU/{self.stage}', exist_ok=True)
-        # Save model state_dict, ensure 'module.' prefix is handled
-        if isinstance(self.model, nn.DataParallel):
-            # Save the model without 'module.' prefix
-            model_state_dict = self.model.module.state_dict()
-        else:
-            model_state_dict = self.model.state_dict()
-        torch.save({'weight': model_state_dict,
-                    'epoch': epoch,
-                    'metrics_train': metrics_train, # here metrics include (loss, nrmse, psnr, ssim)
-                    'metrics_val': metrics_val,
-                    'stage': self.stage,
-                    'lr': self.lr
-                    },
-                   f'./weight/{self.NUM_GPU}_GPU/{self.stage}/model_checkpoint_{epoch + 1}_epoch.pth')
-        wandb.save(f'./weight/{self.NUM_GPU}_GPU/{self.stage}/model_checkpoint_{epoch + 1}_epoch.pth', 
-                   base_path=f'./weight/{self.NUM_GPU}_GPU/{self.stage}',
-                   policy='live'
-                   )
-        print('-------Model Saved-------')
+    # def model_checkpoint_save(self, epoch, metrics_train, metrics_val):
+    #     os.makedirs(f'./weight/{self.NUM_GPU}_GPU/{self.stage}', exist_ok=True)
+    #     # Save model state_dict, ensure 'module.' prefix is handled
+    #     if isinstance(self.model, nn.DataParallel):
+    #         # Save the model without 'module.' prefix
+    #         model_state_dict = self.model.module.state_dict()
+    #     else:
+    #         model_state_dict = self.model.state_dict()
+    #     torch.save({'weight': model_state_dict,
+    #                 'epoch': epoch,
+    #                 'metrics_train': metrics_train, # here metrics include (loss, nrmse, psnr, ssim)
+    #                 'metrics_val': metrics_val,
+    #                 'stage': self.stage,
+    #                 'lr': self.lr
+    #                 },
+    #                f'./weight/{self.NUM_GPU}_GPU/{self.stage}/model_checkpoint_{epoch + 1}_epoch.pth')
+    #     wandb.save(f'./weight/{self.NUM_GPU}_GPU/{self.stage}/model_checkpoint_{epoch + 1}_epoch.pth', 
+    #                base_path=f'./weight/{self.NUM_GPU}_GPU/{self.stage}',
+    #                policy='live'
+    #                )
+    #     print('-------Model Saved-------')
 
     def train(self):
         if self.if_load_weight:
@@ -391,11 +407,18 @@ class Trainer:
                     )
                 if (epoch + 1) % 10 == 0:
                     print(f"Epoch {pretrained_epoch + epoch + 2}/{self.epochs + pretrained_epoch + 1}\n"
-                          f"Train:  Loss - {metric_train[0]:.6f}    | RMSE - {metric_train[1]:.6f}  | PSNR - {metric_train[2]:.6f}      | SSIM - {metric_train[3]:.6f}\n"
-                          f"Val:    Loss - {metric_val[0]:.6f}      | RMSE - {metric_val[1]:.6f}    | PSNR - {metric_val[2]:.6f}        | SSIM - {metric_val[3]:.6f}\n"
+                          f"Train:  Loss - {metric_train[0]:.6f}  | RMSE - {metric_train[1]:.6f}  | PSNR - {metric_train[2]:.6f}  | SSIM - {metric_train[3]:.6f}\n"
+                          f"Val:    Loss - {metric_val[0]:.6f}  | RMSE - {metric_val[1]:.6f}  | PSNR - {metric_val[2]:.6f}  | SSIM - {metric_val[3]:.6f}\n"
                           '------------------------------------------------------------------------------------------------------------------------')
                 if (epoch + 1) % 20 == 0:
-                    self.model_checkpoint_save(epoch + self.check_point, self.train_metrics, self.val_metrics)
+                    print("lr = {:.10f}".format(self.optimizer.param_groups[0]['lr']))
+                    # self.model_checkpoint_save(epoch + self.check_point, self.train_metrics, self.val_metrics)
+
+                self.early_stopping(metric_val[0], self.model, self.exp_id, self.loss_method)
+
+                if self.early_stopping.early_stop:
+                    print("Early stopped, training terminated")
+                    break
 
         else:
             print('-------Train From Beginning-------')
@@ -420,11 +443,18 @@ class Trainer:
                     )
                 if (epoch + 1) % 10 == 0:
                     print(f"Epoch {epoch + 1}/{self.epochs}\n"
-                          f"Train:  Loss - {metric_train[0]:.6f}    | RMSE - {metric_train[1]:.6f}  | PSNR - {metric_train[2]:.6f}      | SSIM - {metric_train[3]:.6f}\n"
-                          f"Val:    Loss - {metric_val[0]:.6f}      | RMSE - {metric_val[1]:.6f}    | PSNR - {metric_val[2]:.6f}        | SSIM - {metric_val[3]:.6f}\n"
+                          f"Train:  Loss - {metric_train[0]:.6f}  | RMSE - {metric_train[1]:.6f}  | PSNR - {metric_train[2]:.6f}  | SSIM - {metric_train[3]:.6f}\n"
+                          f"Val:    Loss - {metric_val[0]:.6f}  | RMSE - {metric_val[1]:.6f}  | PSNR - {metric_val[2]:.6f}  | SSIM - {metric_val[3]:.6f}\n"
                           "------------------------------------------------------------------------------------------------------------------------") 
                 if (epoch + 1) % 20 == 0:
-                    self.model_checkpoint_save(epoch, self.train_metrics, self.val_metrics)
+                    print("lr = {:.10f}".format(self.optimizer.param_groups[0]['lr']))
+                    # self.model_checkpoint_save(epoch, self.train_metrics, self.val_metrics)
+                
+                self.early_stopping(metric_val[0], self.model, self.exp_id, self.loss_method)
+
+                if self.early_stopping.early_stop:
+                    print("Early stopped, training terminated")
+                    break
         print('-------Training Complete-------')
 
     def data_compose(self, input, predict):

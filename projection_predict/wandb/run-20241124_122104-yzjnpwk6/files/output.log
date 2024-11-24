@@ -1,0 +1,19 @@
+Loaded training data from: /root/autodl-tmp/shared_data/projection/raw/Projection_train_data_16_angles_padded.npz
+Loaded val data from: /root/autodl-tmp/shared_data/projection/raw/Projection_val_data_16_angles_padded.npz
+Train data information:
+Caution: Max value of input data is 46.328514099121094, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Caution: Max value of input data is 40.22502899169922, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Data shuffled
+-------Train From Beginning-------
+Traceback (most recent call last):
+  File "/root/autodl-tmp/p01_code/projection_predict/main.py", line 81, in <module>
+    main()
+  File "/root/autodl-tmp/p01_code/projection_predict/main.py", line 76, in main
+    model_train.train()
+  File "/root/autodl-tmp/p01_code/projection_predict/trainer.py", line 451, in train
+    self.early_stopping(metric_val[0], self.model)
+TypeError: EarlyStopping.__call__() missing 1 required positional argument: 'exp_id'

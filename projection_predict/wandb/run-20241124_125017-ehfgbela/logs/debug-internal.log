@@ -1,0 +1,17 @@
+{"time":"2024-11-24T12:50:17.296085612+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-24T12:50:17.296107783+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241124_125017-ehfgbela/logs/debug-core.log"}
+{"time":"2024-11-24T12:50:17.402047417+08:00","level":"INFO","msg":"created new stream","id":"ehfgbela"}
+{"time":"2024-11-24T12:50:17.40210375+08:00","level":"INFO","msg":"stream: started","id":"ehfgbela"}
+{"time":"2024-11-24T12:50:17.402170953+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"ehfgbela"}
+{"time":"2024-11-24T12:50:17.402209135+08:00","level":"INFO","msg":"handler: started","stream_id":"ehfgbela"}
+{"time":"2024-11-24T12:50:17.402262518+08:00","level":"INFO","msg":"sender: started","stream_id":"ehfgbela"}
+{"time":"2024-11-24T12:50:18.681456318+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-24T13:23:24.488831064+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-24T13:23:24.489432379+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-24T13:23:25.489406985+08:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"saving job artifact","runtime_seconds":0.383402301},{"desc":"uploading wandb-summary.json","runtime_seconds":0.357411313},{"desc":"uploading config.yaml","runtime_seconds":0.039461748},{"desc":"uploading output.log","runtime_seconds":0.039436857}],"total_operations":4}}
+{"time":"2024-11-24T13:23:38.219616025+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-24T13:23:40.023945887+08:00","level":"INFO","msg":"stream: closing","id":"ehfgbela"}
+{"time":"2024-11-24T13:23:40.023971038+08:00","level":"INFO","msg":"handler: closed","stream_id":"ehfgbela"}
+{"time":"2024-11-24T13:23:40.023979329+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ehfgbela"}
+{"time":"2024-11-24T13:23:40.023995319+08:00","level":"INFO","msg":"sender: closed","stream_id":"ehfgbela"}
+{"time":"2024-11-24T13:23:40.024085703+08:00","level":"INFO","msg":"stream: closed","id":"ehfgbela"}

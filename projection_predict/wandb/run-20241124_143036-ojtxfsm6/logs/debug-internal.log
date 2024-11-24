@@ -1,0 +1,17 @@
+{"time":"2024-11-24T14:30:36.983087156+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-24T14:30:36.983112387+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241124_143036-ojtxfsm6/logs/debug-core.log"}
+{"time":"2024-11-24T14:30:37.088276355+08:00","level":"INFO","msg":"created new stream","id":"ojtxfsm6"}
+{"time":"2024-11-24T14:30:37.088322317+08:00","level":"INFO","msg":"stream: started","id":"ojtxfsm6"}
+{"time":"2024-11-24T14:30:37.088339258+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"ojtxfsm6"}
+{"time":"2024-11-24T14:30:37.088375449+08:00","level":"INFO","msg":"handler: started","stream_id":"ojtxfsm6"}
+{"time":"2024-11-24T14:30:37.088458303+08:00","level":"INFO","msg":"sender: started","stream_id":"ojtxfsm6"}
+{"time":"2024-11-24T14:30:38.38073108+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-24T14:49:58.540417238+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-24T14:49:58.540937786+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-24T14:49:59.54093959+08:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"saving job artifact","runtime_seconds":0.310996194},{"desc":"uploading wandb-summary.json","runtime_seconds":0.284883925}],"total_operations":2}}
+{"time":"2024-11-24T14:50:12.894347584+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-24T14:50:14.698680921+08:00","level":"INFO","msg":"stream: closing","id":"ojtxfsm6"}
+{"time":"2024-11-24T14:50:14.698706371+08:00","level":"INFO","msg":"handler: closed","stream_id":"ojtxfsm6"}
+{"time":"2024-11-24T14:50:14.698714842+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ojtxfsm6"}
+{"time":"2024-11-24T14:50:14.698731352+08:00","level":"INFO","msg":"sender: closed","stream_id":"ojtxfsm6"}
+{"time":"2024-11-24T14:50:14.698808905+08:00","level":"INFO","msg":"stream: closed","id":"ojtxfsm6"}

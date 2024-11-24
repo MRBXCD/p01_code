@@ -1,0 +1,16 @@
+{"time":"2024-11-24T12:01:19.782742315+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-11-24T12:01:19.782757995+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241124_120119-rjlmcrg3/logs/debug-core.log"}
+{"time":"2024-11-24T12:01:19.886480095+08:00","level":"INFO","msg":"created new stream","id":"rjlmcrg3"}
+{"time":"2024-11-24T12:01:19.886505236+08:00","level":"INFO","msg":"stream: started","id":"rjlmcrg3"}
+{"time":"2024-11-24T12:01:19.886543887+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"rjlmcrg3"}
+{"time":"2024-11-24T12:01:19.886548637+08:00","level":"INFO","msg":"handler: started","stream_id":"rjlmcrg3"}
+{"time":"2024-11-24T12:01:19.886589268+08:00","level":"INFO","msg":"sender: started","stream_id":"rjlmcrg3"}
+{"time":"2024-11-24T12:01:21.233268939+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-24T12:01:42.390498735+08:00","level":"INFO","msg":"stream: closing","id":"rjlmcrg3"}
+{"time":"2024-11-24T12:01:42.390528576+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-24T12:01:42.3910588+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-24T12:01:43.962991522+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-24T12:01:45.023445995+08:00","level":"INFO","msg":"handler: closed","stream_id":"rjlmcrg3"}
+{"time":"2024-11-24T12:01:45.023520487+08:00","level":"INFO","msg":"sender: closed","stream_id":"rjlmcrg3"}
+{"time":"2024-11-24T12:01:45.023507457+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"rjlmcrg3"}
+{"time":"2024-11-24T12:01:45.02362792+08:00","level":"INFO","msg":"stream: closed","id":"rjlmcrg3"}
