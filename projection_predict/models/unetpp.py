@@ -38,7 +38,7 @@ class DoubleConv(nn.Module):
 #         return out
 
 class Unetpp(nn.Module):
-    def __init__(self, args,in_channel,out_channel):
+    def __init__(self, args,in_channel=1,out_channel=1):
         super().__init__()
 
         self.args = args

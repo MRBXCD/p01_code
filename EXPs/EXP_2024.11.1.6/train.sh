@@ -6,7 +6,7 @@ for loss_method in Combined_loss
 do
 
 python main.py \
-    --net atten_unet\
+    --net unet++\
     --exp_id EXP_2024.11.1.5 \
     --data_path /home/mrb2/experiments/graduation_project/shared_data/projection/raw\
     --device cuda\
@@ -19,7 +19,7 @@ python main.py \
     --stage 8-16\
     --loss_method $loss_method\
     --dropout 0.1\
-    --wandb online
+    --wandb disabled
 
 echo '====================================================================================================================='
 done

@@ -7,3 +7,7 @@
 {"time":"2024-11-24T16:03:34.366800359+08:00","level":"INFO","msg":"sender: started","stream_id":"zaxw59h0"}
 {"time":"2024-11-24T16:03:35.311487332+08:00","level":"INFO","msg":"Starting system monitor"}
 {"time":"2024-11-24T16:12:51.549370333+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/zaxw59h0/file_stream\": EOF"}
+{"time":"2024-11-24T16:19:36.555657318+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/zaxw59h0/file_stream\": EOF"}
+{"time":"2024-11-24T16:20:06.550393388+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/zaxw59h0/file_stream\": EOF"}
+{"time":"2024-11-24T16:30:06.922653195+08:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/zaxw59h0/file_stream"}
+{"time":"2024-11-24T16:30:06.922711326+08:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/CBCT-Reconstruction/projection-domain-dl/zaxw59h0/file_stream: {\"error\":\"run projection-domain-dl/zaxw59h0 not found while streaming file\"}"}
