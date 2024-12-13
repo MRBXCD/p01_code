@@ -21,7 +21,7 @@ from models_3_path.model1 import UNet3_1
 from models_3_path.model2 import UNet3_2
 from models_3_path.model3 import UNet3_3
 
-from projectionDataloader import ProjectionDataset, ProjectionDataset_inference, ProjectionDataset_FineTune
+from projectionDataloader import ProjectionDataset, ProjectionDataset_archv2_5, ProjectionDataset_FineTune
 import os
 import torchvision.transforms.functional as F
 from collections import OrderedDict
@@ -31,6 +31,8 @@ from utils.earlyStop import EarlyStopping
 class Trainer:
     def __init__(self, params):
         self.exp_id = params.exp_id
+        self.exp_name = params.exp_name
+        self.exp_group = params.exp_group
         # Define model
         self.NUM_GPU = torch.cuda.device_count()
         os.makedirs(f'./weight/{self.NUM_GPU}_GPU', exist_ok=True)
@@ -83,7 +85,7 @@ class Trainer:
         self.model_parameters = hyper_parameters[self.stage]
 
         if self.net == 'unet':
-            self.model = UNet()
+            self.model = UNet(in_channels=self.model_parameters[0], out_channels=self.model_parameters[1])
         elif self.net == 'unet++':
             self.model = Unetpp()
         elif self.net == 'atten_unet':
@@ -101,9 +103,9 @@ class Trainer:
         print(f'Loaded val data from: {self.val_input}')
 
         print('Train data information:')
-        train_dataset = ProjectionDataset(self.train_input, if_norm=False)
+        train_dataset = ProjectionDataset_archv2_5(self.train_input, if_norm=False)
         print('---------------------------------------------')
-        val_dataset = ProjectionDataset(self.val_input, if_norm=False)
+        val_dataset = ProjectionDataset_archv2_5(self.val_input, if_norm=False)
         print('---------------------------------------------')
 
         # Initialize dataloader
@@ -114,7 +116,7 @@ class Trainer:
 
         if not self.if_extraction:
             self.train_loader = DataLoader(train_dataset, batch_size=self.batch_size, shuffle=True, drop_last=True)
-            self.val_loader = DataLoader(val_dataset, batch_size=self.batch_size, shuffle=True, drop_last=True)
+            self.val_loader = DataLoader(val_dataset, batch_size=66, shuffle=False, drop_last=True)
             print('Data shuffled')
         else:
             self.train_loader = DataLoader(train_dataset, batch_size=1, shuffle=False, drop_last=False)
@@ -239,8 +241,8 @@ class Trainer:
         metrics = []
         scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(self.optimizer, T_max=self.tmax, eta_min=1e-7)
         for input, target in self.train_loader:
-            input = input.unsqueeze(1).to(self.device)
-            target = target.unsqueeze(1).to(self.device)
+            input = input.to(self.device)
+            target = target.to(self.device)
             predict = self.model(input)
             loss = self.loss_fn(predict, target)
             metrics.append(self.evaluation_metrics(predict, target))
@@ -262,8 +264,8 @@ class Trainer:
         metrics = []
         with torch.no_grad():
             for input, target in self.val_loader:
-                input = input.unsqueeze(1).to(self.device)
-                target = target.unsqueeze(1).to(self.device)
+                input = input.to(self.device)
+                target = target.to(self.device)
                 predict = self.model(input)
                 loss = self.loss_fn(predict, target)
                 metrics.append(self.evaluation_metrics(predict, target))
@@ -287,96 +289,59 @@ class Trainer:
         metrics_val = []
 
         os.makedirs(f'./result/extraction/{self.stage}/logs', exist_ok=True)
-        first_batch_inputs, first_batch_targets = next(iter(self.train_loader))
-        plt.imsave('./save_for_paper/input_2_4.png', first_batch_inputs[0], cmap='gray')
-        plt.imsave('./save_for_paper/target_2_4.png', first_batch_targets[0], cmap='gray')
+        # first_batch_inputs, first_batch_targets = next(iter(self.train_loader))
+        # plt.imsave('./save_for_paper/input_2_4.png', first_batch_inputs[0], cmap='gray')
+        # plt.imsave('./save_for_paper/target_2_4.png', first_batch_targets[0], cmap='gray')
 
         with torch.no_grad():
             for input, target in tqdm(self.train_loader, desc='Extracting train'):
-                input = input.unsqueeze(1).to(self.device)
-                target = target.unsqueeze(1).to(self.device)
-                target1 = target.cpu().numpy()
-                plt.imsave(f'./save_for_paper/{self.stage}.png', target1[0, 0, :, :], cmap='gray')
-
+                input = input.to(self.device)
+                target = target.to(self.device)
                 prediction_image = self.model(input)
                 loss_train = self.loss_fn(prediction_image, target)
 
                 metric_train = self.evaluation_metrics(prediction_image, target)
                 metrics_train.append(metric_train)
                 losses_train.append(loss_train.item())
-                prediction_image = prediction_image.squeeze(1).cpu().numpy()
+                prediction_image = np.transpose(prediction_image.cpu().numpy().squeeze(), axes=(1,0,2))
                 result_train.append(prediction_image)
-                input = input.squeeze(1).cpu().numpy()
-                input_train.append(input)
-        plt.imsave('./save_for_paper/prediction_2_4.png', result_train[0].squeeze(), cmap='gray')
-        np.savez(f'./result/extraction/{self.stage}/{self.loss_method}_model_output_train.npz', result_train)
-        np.savez(f'./result/extraction/{self.stage}/{self.loss_method}_model_input_train.npz', input_train)
-        np.savetxt(f'./result/extraction/{self.stage}/logs/loss_output_train_{self.loss_method}_{self.stage}.txt', losses_train)
+        plt.imsave(f'./save_for_paper/prediction_{self.stage}.png', result_train[0].reshape(148, self.model_parameters[1]*148), cmap='gray')
+        np.savez(f'./result/extraction/{self.stage}/{self.exp_id}_{self.loss_method}_model_output_train.npz', result_train)
+        np.savetxt(f'./result/extraction/{self.stage}/logs/loss_output_train_{self.exp_id}_{self.loss_method}_{self.stage}.txt', losses_train)
         avg_loss_train = sum(losses_train) / len(losses_train)
 
         with torch.no_grad():
             for input, target in tqdm(self.val_loader, desc='Extracting val'):
-                input = input.unsqueeze(1).to(self.device)
-                target = target.unsqueeze(1).to(self.device)
-
+                input = input.to(self.device)
+                target = target.to(self.device)
                 prediction_image = self.model(input)
-
                 loss_val = self.loss_fn(prediction_image, target)
-
                 metric_val = self.evaluation_metrics(prediction_image, target)
                 metrics_val.append(metric_val)
                 losses_val.append(loss_val.item())
-                prediction_image = prediction_image.squeeze(1).cpu().numpy()
+                prediction_image = np.transpose(prediction_image.cpu().numpy().squeeze(), axes=(1,0,2))
                 result_val.append(prediction_image)
-                input = input.squeeze(1).cpu().numpy()
-                input_val.append(input)
-        plt.imsave('./save_for_paper/prediction_2_4.png', result_val[0].squeeze(), cmap='gray')
-        np.savez(f'./result/extraction/{self.stage}/{self.loss_method}_model_output_val.npz', result_val)
-        np.savez(f'./result/extraction/{self.stage}/{self.loss_method}_model_input_val.npz', input_val)
-        np.savetxt(f'./result/extraction/{self.stage}/logs/loss_output_val_{self.loss_method}_{self.stage}.txt', losses_val)
+        plt.imsave(f'./save_for_paper/prediction_{self.stage}.png', result_val[0].reshape(148, self.model_parameters[1]*148), cmap='gray')
+        np.savez(f'./result/extraction/{self.stage}/{self.exp_id}_{self.loss_method}_model_output_val.npz', result_val)
+        np.savetxt(f'./result/extraction/{self.stage}/logs/loss_output_val_{self.exp_id}_{self.loss_method}_{self.stage}.txt', losses_val)
         avg_loss_val = sum(losses_val) / len(losses_val)
         nrmse, psnr, ssim = self.metrics_process(metrics_train, metrics_val)
-
-        data_compose(self.model_parameters[0], [input_train, result_train], [input_val, result_val])
-
         return (avg_loss_train, avg_loss_val), nrmse, psnr, ssim
 
     def data_extraction(self):
-        path = f'./pretrained_model/{self.loss_method}/{self.stage}/model_checkpoint_{self.check_point}_epoch.pth'
+        path = f'./checkpoints/{self.exp_id}_stage_{self.stage}_{self.loss_method}.pth'
         pretrained_information = torch.load(path, map_location=self.device)
         print(f'Weight loaded from {path}')
         state_dict = pretrained_information['weight']
         self.load_weights(state_dict)
-        self.train_metrics = pretrained_information['metrics_train']
-        self.val_metrics = pretrained_information['metrics_val']
-        self.train_losses = [metric[0] for metric in self.train_metrics]
-        self.val_losses = [metric[0] for metric in self.val_metrics]
+        # self.train_metrics = pretrained_information['metrics_train']
+        # self.val_metrics = pretrained_information['metrics_val']
+        # self.train_losses = [metric[0] for metric in self.train_metrics]
+        # self.val_losses = [metric[0] for metric in self.val_metrics]
 
         print(f'-------Weight Loaded From {self.check_point} epoch-------')
         metric = self.extraction_epoch()
         print(f'Average loss: {metric[0]}, Average RMSE: {metric[1]}, Average PSNR: {metric[2]}, Average SSIM: {metric[3]},')
-
-    # def model_checkpoint_save(self, epoch, metrics_train, metrics_val):
-    #     os.makedirs(f'./weight/{self.NUM_GPU}_GPU/{self.stage}', exist_ok=True)
-    #     # Save model state_dict, ensure 'module.' prefix is handled
-    #     if isinstance(self.model, nn.DataParallel):
-    #         # Save the model without 'module.' prefix
-    #         model_state_dict = self.model.module.state_dict()
-    #     else:
-    #         model_state_dict = self.model.state_dict()
-    #     torch.save({'weight': model_state_dict,
-    #                 'epoch': epoch,
-    #                 'metrics_train': metrics_train, # here metrics include (loss, nrmse, psnr, ssim)
-    #                 'metrics_val': metrics_val,
-    #                 'stage': self.stage,
-    #                 'lr': self.lr
-    #                 },
-    #                f'./weight/{self.NUM_GPU}_GPU/{self.stage}/model_checkpoint_{epoch + 1}_epoch.pth')
-    #     wandb.save(f'./weight/{self.NUM_GPU}_GPU/{self.stage}/model_checkpoint_{epoch + 1}_epoch.pth', 
-    #                base_path=f'./weight/{self.NUM_GPU}_GPU/{self.stage}',
-    #                policy='live'
-    #                )
-    #     print('-------Model Saved-------')
 
     def train(self):
         if self.if_load_weight:
@@ -414,8 +379,8 @@ class Trainer:
                 if (epoch + 1) % 20 == 0:
                     print("lr = {:.10f}".format(self.optimizer.param_groups[0]['lr']))
                     # self.model_checkpoint_save(epoch + self.check_point, self.train_metrics, self.val_metrics)
-
-                self.early_stopping(metric_val[0], self.model, self.exp_id, self.net)
+                suffix = f"{self.exp_group}_{self.exp_name}"
+                self.early_stopping(metric_val[0], self.model, self.exp_id, suffix)
 
                 if self.early_stopping.early_stop:
                     print("Early stopped, training terminated")
@@ -450,8 +415,8 @@ class Trainer:
                 if (epoch + 1) % 20 == 0:
                     print("lr = {:.10f}".format(self.optimizer.param_groups[0]['lr']))
                     # self.model_checkpoint_save(epoch, self.train_metrics, self.val_metrics)
-                
-                self.early_stopping(metric_val[0], self.model, self.exp_id, self.net)
+                suffix = f"{self.exp_group}_{self.exp_name}"
+                self.early_stopping(metric_val[0], self.model, self.exp_id, suffix)
 
                 if self.early_stopping.early_stop:
                     print("Early stopped, training terminated")

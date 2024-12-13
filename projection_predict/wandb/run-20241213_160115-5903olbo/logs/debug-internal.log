@@ -1,0 +1,9 @@
+{"time":"2024-12-13T16:01:15.222105836+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-12-13T16:01:15.222117956+08:00","level":"INFO","msg":"created symlink","path":"/home/mrb2/experiments/graduation_project/p01_code/projection_predict/wandb/run-20241213_160115-5903olbo/logs/debug-core.log"}
+{"time":"2024-12-13T16:01:15.424783209+08:00","level":"INFO","msg":"created new stream","id":"5903olbo"}
+{"time":"2024-12-13T16:01:15.424813079+08:00","level":"INFO","msg":"stream: started","id":"5903olbo"}
+{"time":"2024-12-13T16:01:15.424864661+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"5903olbo"}
+{"time":"2024-12-13T16:01:15.424884631+08:00","level":"INFO","msg":"sender: started","stream_id":"5903olbo"}
+{"time":"2024-12-13T16:01:15.424908822+08:00","level":"INFO","msg":"handler: started","stream_id":"5903olbo"}
+{"time":"2024-12-13T16:01:16.363364972+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-13T16:03:32.279283319+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/5903olbo/file_stream\": EOF"}

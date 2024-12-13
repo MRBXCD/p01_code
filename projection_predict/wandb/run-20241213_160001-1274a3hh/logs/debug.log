@@ -1,0 +1,25 @@
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_setup.py:_flush():79] Current SDK version is 0.18.7
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_setup.py:_flush():79] Configure stats pid to 142823
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_setup.py:_flush():79] Loading settings from /home/mrb2/.config/wandb/settings
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_setup.py:_flush():79] Loading settings from /home/mrb2/experiments/graduation_project/p01_code/projection_predict/wandb/settings
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_setup.py:_flush():79] Loading settings from environment variables: {}
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_setup.py:_flush():79] Applying setup settings: {'mode': 'online', '_disable_service': None}
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_setup.py:_flush():79] Inferring run settings from compute environment: {'program_relpath': 'projection_predict/main.py', 'program_abspath': '/home/mrb2/experiments/graduation_project/p01_code/projection_predict/main.py', 'program': '/home/mrb2/experiments/graduation_project/p01_code/projection_predict/main.py'}
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_setup.py:_flush():79] Applying login settings: {}
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_init.py:_log_setup():533] Logging user logs to /home/mrb2/experiments/graduation_project/p01_code/projection_predict/wandb/run-20241213_160001-1274a3hh/logs/debug.log
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_init.py:_log_setup():534] Logging internal logs to /home/mrb2/experiments/graduation_project/p01_code/projection_predict/wandb/run-20241213_160001-1274a3hh/logs/debug-internal.log
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_init.py:init():619] calling init triggers
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_init.py:init():626] wandb.init called with sweep_config: {}
+config: {'exp_id': 'EXP_2024.12.1.10', 'exp_name': 'L1', 'exp_group': 'stage_8-16', 'data_path': '/home/mrb2/experiments/graduation_project/shared_data/projection/raw', 'net': 'unet', 'device': 'cuda', 'epochs': 200, 'batch_size': 128, 'lr': 0.0016, 'scheduler': True, 'tmax': 20, 'dropout': 0.0, 'early_stop': True, 'patience': 10, 'if_load_weight': False, 'check_point': 0, 'stage': '8-16', 'norm': False, 'loss_method': 'L1', 'if_extraction': False, 'if_infer': False, 'wandb': 'online'}
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_init.py:init():669] starting backend
+2024-12-13 16:00:01,241 INFO    MainThread:142823 [wandb_init.py:init():673] sending inform_init request
+2024-12-13 16:00:01,242 INFO    MainThread:142823 [backend.py:_multiprocessing_setup():104] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-12-13 16:00:01,242 INFO    MainThread:142823 [wandb_init.py:init():686] backend started and connected
+2024-12-13 16:00:01,243 INFO    MainThread:142823 [wandb_init.py:init():781] updated telemetry
+2024-12-13 16:00:01,246 INFO    MainThread:142823 [wandb_init.py:init():814] communicating run to backend with 90.0 second timeout
+2024-12-13 16:00:02,356 INFO    MainThread:142823 [wandb_init.py:init():867] starting run threads in backend
+2024-12-13 16:00:02,423 INFO    MainThread:142823 [wandb_run.py:_console_start():2456] atexit reg
+2024-12-13 16:00:02,424 INFO    MainThread:142823 [wandb_run.py:_redirect():2305] redirect: wrap_raw
+2024-12-13 16:00:02,424 INFO    MainThread:142823 [wandb_run.py:_redirect():2370] Wrapping output streams.
+2024-12-13 16:00:02,424 INFO    MainThread:142823 [wandb_run.py:_redirect():2395] Redirects installed.
+2024-12-13 16:00:02,426 INFO    MainThread:142823 [wandb_init.py:init():911] run started, returning control to user process

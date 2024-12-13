@@ -1,0 +1,16 @@
+{"time":"2024-12-05T20:39:35.595709776+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-12-05T20:39:35.595746816+08:00","level":"INFO","msg":"created symlink","path":"/home/mrb2/experiments/graduation_project/p01_code/projection_predict/wandb/run-20241205_203935-mousxoux/logs/debug-core.log"}
+{"time":"2024-12-05T20:39:35.797559796+08:00","level":"INFO","msg":"created new stream","id":"mousxoux"}
+{"time":"2024-12-05T20:39:35.797613367+08:00","level":"INFO","msg":"stream: started","id":"mousxoux"}
+{"time":"2024-12-05T20:39:35.797656733+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"mousxoux"}
+{"time":"2024-12-05T20:39:35.797702818+08:00","level":"INFO","msg":"handler: started","stream_id":"mousxoux"}
+{"time":"2024-12-05T20:39:35.798581014+08:00","level":"INFO","msg":"sender: started","stream_id":"mousxoux"}
+{"time":"2024-12-05T20:39:36.850457423+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-05T20:39:37.022022277+08:00","level":"INFO","msg":"stream: closing","id":"mousxoux"}
+{"time":"2024-12-05T20:39:37.022049547+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-05T20:39:37.022626407+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-05T20:39:39.249322649+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-05T20:39:39.808662626+08:00","level":"INFO","msg":"handler: closed","stream_id":"mousxoux"}
+{"time":"2024-12-05T20:39:39.808679726+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"mousxoux"}
+{"time":"2024-12-05T20:39:39.808694896+08:00","level":"INFO","msg":"sender: closed","stream_id":"mousxoux"}
+{"time":"2024-12-05T20:39:39.808721317+08:00","level":"INFO","msg":"stream: closed","id":"mousxoux"}

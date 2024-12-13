@@ -1,0 +1,20 @@
+Loaded training data from: /home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_train_data_16_angles_padded.npz
+Loaded val data from: /home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_val_data_16_angles_padded.npz
+Train data information:
+Caution: Max value of input data is 46.328514099121094, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Caution: Max value of input data is 40.22502899169922, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Data shuffled
+-------Train From Beginning-------
+Val loss decrease: (inf --> 96299400.000000), Saving checkpoint.
+Val loss decrease: (96299400.000000 --> 42334.398438), Saving checkpoint.
+Val loss decrease: (42334.398438 --> 177.354553), Saving checkpoint.
+Val loss decrease: (177.354553 --> 97.278191), Saving checkpoint.
+Val loss decrease: (97.278191 --> 2.598411), Saving checkpoint.
+Val loss decrease: (2.598411 --> 2.298278), Saving checkpoint.
+Val loss decrease: (2.298278 --> 1.685592), Saving checkpoint.
+Val loss decrease: (1.685592 --> 1.440068), Saving checkpoint.
+Val loss decrease: (1.440068 --> 1.342485), Saving checkpoint.

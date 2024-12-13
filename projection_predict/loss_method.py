@@ -14,12 +14,10 @@ class PerceptualLoss(nn.Module):
             param.requires_grad = False  # 冻结参数
 
     def forward(self, y_pred, y_true):
-        # 如果输入是单通道，扩展为 3 通道
-        if y_pred.shape[1] == 1:
-            y_pred = y_pred.repeat(1, 3, 1, 1)  # 在通道维度重复 3 次
-        if y_true.shape[1] == 1:
-            y_true = y_true.repeat(1, 3, 1, 1)  # 在通道维度重复 3 次
-        
+        shape = y_pred.shape
+        y_pred = y_pred.reshape(shape[0], 1, shape[1]*shape[2], shape[3]).repeat(1, 3, 1, 1)
+        y_true = y_true.reshape(shape[0], 1, shape[1]*shape[2], shape[3]).repeat(1, 3, 1, 1)      
+
         pred_features = []
         true_features = []
         x_pred, x_true = y_pred, y_true

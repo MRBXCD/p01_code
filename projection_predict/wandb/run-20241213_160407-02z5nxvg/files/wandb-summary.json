@@ -1,0 +1,1 @@
+{"Val Total PSNR":33.910393,"Val Total SSIM":0.942929,"Val Total RMSE":0.810918,"Train Total SSIM":0.951537,"Train Total RMSE":0.73773,"Val Total Loss":0.440576,"_wandb":{"runtime":6809},"Train Total Loss":0.406294,"Total Epoch":600,"Present Epoch":367,"Train Total PSNR":35.408397,"_step":366,"_runtime":6809.281794947,"_timestamp":1.7340838570270362e+09}

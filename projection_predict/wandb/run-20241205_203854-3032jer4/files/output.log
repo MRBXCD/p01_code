@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/mrb2/experiments/graduation_project/p01_code/projection_predict/main.py", line 82, in <module>
+    main()
+  File "/home/mrb2/experiments/graduation_project/p01_code/projection_predict/main.py", line 76, in main
+    model_train = trainer.Trainer(params)
+  File "/home/mrb2/experiments/graduation_project/p01_code/projection_predict/trainer.py", line 94, in __init__
+    self.train_input = os.path.join(self.data_path, f'Projection_train_data_{self.data_stage}_angles_padded.npz')
+  File "/home/mrb2/miniconda3/envs/p01/lib/python3.10/posixpath.py", line 76, in join
+    a = os.fspath(a)
+TypeError: expected str, bytes or os.PathLike object, not NoneType

@@ -15,6 +15,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--exp_id', type=str, default='EXP',
                         help='index of experiment')
+    parser.add_argument('--exp_name', type=str, default='default',
+                        help='experiment name')
+    parser.add_argument('--exp_group', type=str, default='default',
+                        help='experiment group name')
+    
     parser.add_argument('--data_path', type=str, help='path to data folder')
     parser.add_argument('--net', type=str, default='unet',
                         help='unet/unet++/atten_unet')
@@ -36,7 +41,7 @@ def main():
                         help='dropout percent') 
     parser.add_argument('--early_stop', type=bool, default=False, 
                         help='if activate early stop function')
-    parser.add_argument('--patience', type=int, default=10, 
+    parser.add_argument('--patience', type=int, default=20, 
                         help='early stop patience')
     
     # Model save
@@ -61,8 +66,8 @@ def main():
 
     wandb.init(
         project='projection-domain-dl',
-        name=params.loss_method,
-        group='loss_method_exp',
+        name=params.exp_name,
+        group=params.exp_group,
         config=params,
         resume='allow',
         job_type='training',

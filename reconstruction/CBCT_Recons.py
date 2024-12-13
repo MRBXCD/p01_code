@@ -305,31 +305,31 @@ class Recons:
         print('Shape of train projections:', np.shape(projections_train))
         print('Shape of val projections:', np.shape(projections_val))
 
-        # for index in tqdm(range(len(projections_train)), desc='Reconstructing train data', leave=True):
-        #     voxel_truth = voxel_raw_train[index]
-        #     proj = projections_train[index]
-        #     reconstructed_voxel = self.astra_reconstruct_3d(proj)
-        #     reconstruction_train.append(reconstructed_voxel)
+        for index in tqdm(range(len(projections_train)), desc='Reconstructing train data', leave=True):
+            voxel_truth = voxel_raw_train[index]
+            proj = projections_train[index]
+            reconstructed_voxel = self.astra_reconstruct_3d(proj)
+            reconstruction_train.append(reconstructed_voxel)
 
-        #     # # evaluate
-        #     # fig, axi = plt.subplots(1,2)
-        #     # plt.subplots_adjust(wspace=0.4, hspace=0)
-        #     # axi[0].imshow(reconstruction[index][:, 64, :], cmap='gray')
-        #     # axi[0].set_title(f'Reconstructed Slice')
-        #     # axi[1].imshow(voxel_raw[index][:, 64, :], cmap='gray')
-        #     # axi[1].set_title(f'Raw Slice')
-        #     # plt.savefig(f'./test/{index}.png', dpi=500)
-        #     # plt.close()
+            # # evaluate
+            # fig, axi = plt.subplots(1,2)
+            # plt.subplots_adjust(wspace=0.4, hspace=0)
+            # axi[0].imshow(reconstruction[index][:, 64, :], cmap='gray')
+            # axi[0].set_title(f'Reconstructed Slice')
+            # axi[1].imshow(voxel_raw[index][:, 64, :], cmap='gray')
+            # axi[1].set_title(f'Raw Slice')
+            # plt.savefig(f'./test/{index}.png', dpi=500)
+            # plt.close()
             
-        #     mse_individual = mse(reconstruction_train[index], voxel_truth)
-        #     mse_total_individual.append(mse_individual)
+            mse_individual = mse(reconstruction_train[index], voxel_truth)
+            mse_total_individual.append(mse_individual)
 
-        #     # save matrix for debug
-        #     if self.if_numpy:
-        #         np.save(f'./result/voxel/unzipped/{index}', reconstructed_voxel)
-        # np.savetxt(f'./result/voxel/logs/total_mse_train_{self.algorithm}_{self.num_angles}_angles.txt', mse_total_individual, fmt='%f')
-        # np.savez(f'./result/voxel/Train_Recons_{self.algorithm}_{self.num_angles}_angles.npz', reconstruction_train)
-        # # self.result_show(reconstruction_train[0], 'recons')
+            # save matrix for debug
+            if self.if_numpy:
+                np.save(f'./result/voxel/unzipped/{index}', reconstructed_voxel)
+        np.savetxt(f'./result/voxel/logs/total_mse_train_{self.algorithm}_{self.num_angles}_angles.txt', mse_total_individual, fmt='%f')
+        np.savez(f'./result/voxel/Train_Recons_{self.algorithm}_{self.num_angles}_angles.npz', reconstruction_train)
+        # self.result_show(reconstruction_train[0], 'recons')
 
         for index in tqdm(range(len(projections_val)), desc='Reconstructing val data', leave=True):
             voxel_truth = voxel_raw_val[index]

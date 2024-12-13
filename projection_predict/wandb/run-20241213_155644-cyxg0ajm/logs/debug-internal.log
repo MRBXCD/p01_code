@@ -1,0 +1,13 @@
+{"time":"2024-12-13T15:56:44.42223405+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-12-13T15:56:44.42225005+08:00","level":"INFO","msg":"created symlink","path":"/home/mrb2/experiments/graduation_project/p01_code/projection_predict/wandb/run-20241213_155644-cyxg0ajm/logs/debug-core.log"}
+{"time":"2024-12-13T15:56:44.626817018+08:00","level":"INFO","msg":"created new stream","id":"cyxg0ajm"}
+{"time":"2024-12-13T15:56:44.626848359+08:00","level":"INFO","msg":"stream: started","id":"cyxg0ajm"}
+{"time":"2024-12-13T15:56:44.626940801+08:00","level":"INFO","msg":"handler: started","stream_id":"cyxg0ajm"}
+{"time":"2024-12-13T15:56:44.62746147+08:00","level":"INFO","msg":"sender: started","stream_id":"cyxg0ajm"}
+{"time":"2024-12-13T15:56:44.627469361+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"cyxg0ajm"}
+{"time":"2024-12-13T15:56:45.584437889+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-13T15:59:01.472242582+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/cyxg0ajm/file_stream\": EOF"}
+{"time":"2024-12-13T16:00:16.763277121+08:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/cyxg0ajm/file_stream"}
+{"time":"2024-12-13T16:00:16.763345412+08:00","level":"ERROR+4","msg":"filestream: fatal error: filestream: failed to upload: 404 Not Found path=files/CBCT-Reconstruction/projection-domain-dl/cyxg0ajm/file_stream: {\"error\":\"run projection-domain-dl/cyxg0ajm not found while streaming file\"}"}
+{"time":"2024-12-13T16:00:26.401848755+08:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2024-12-13T16:00:26.401919646+08:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404 Not Found: {\"errors\":[{\"message\":\"run projection-domain-dl/cyxg0ajm not found during createRunFiles\",\"path\":[\"createRunFiles\"]}],\"data\":{\"createRunFiles\":null}}"}

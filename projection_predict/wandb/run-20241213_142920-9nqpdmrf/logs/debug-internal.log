@@ -1,0 +1,41 @@
+{"time":"2024-12-13T14:29:20.190165838+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-12-13T14:29:20.190192889+08:00","level":"INFO","msg":"created symlink","path":"/home/mrb2/experiments/graduation_project/p01_code/projection_predict/wandb/run-20241213_142920-9nqpdmrf/logs/debug-core.log"}
+{"time":"2024-12-13T14:29:20.394029263+08:00","level":"INFO","msg":"created new stream","id":"9nqpdmrf"}
+{"time":"2024-12-13T14:29:20.394067494+08:00","level":"INFO","msg":"stream: started","id":"9nqpdmrf"}
+{"time":"2024-12-13T14:29:20.394100975+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"9nqpdmrf"}
+{"time":"2024-12-13T14:29:20.394121575+08:00","level":"INFO","msg":"handler: started","stream_id":"9nqpdmrf"}
+{"time":"2024-12-13T14:29:20.394137146+08:00","level":"INFO","msg":"sender: started","stream_id":"9nqpdmrf"}
+{"time":"2024-12-13T14:29:21.499481924+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-13T14:33:07.447955544+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T14:33:09.874597375+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T14:33:52.687890102+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T14:34:22.450706075+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T14:36:37.437990422+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T14:37:52.458232465+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T14:46:22.447568669+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T14:48:07.447143284+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T14:49:07.697328784+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T14:50:37.452081853+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T14:55:07.446735908+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T14:55:09.602404739+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T14:59:37.442679928+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T15:01:37.460383415+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T15:13:22.443825235+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T15:18:52.449044124+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T15:20:22.444634051+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T15:20:52.451237773+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T15:21:37.448846883+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T15:22:08.446478939+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T15:23:07.439166709+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T15:25:52.443320362+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T15:28:52.444238299+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T15:31:22.465260068+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/9nqpdmrf/file_stream\": EOF"}
+{"time":"2024-12-13T15:31:27.23849757+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-13T15:31:27.241041448+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-13T15:31:28.239775452+08:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading EXP_2024.12.1.10_stage_8-16_L1.pth","runtime_seconds":0.660984415,"progress":"1.0MB/29.7MB"},{"desc":"uploading wandb-summary.json","runtime_seconds":0.309963476,"progress":"356B/356B"},{"desc":"saving job artifact","runtime_seconds":0.30862903}],"total_operations":3}}
+{"time":"2024-12-13T15:31:44.777677307+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-13T15:31:46.304509354+08:00","level":"INFO","msg":"stream: closing","id":"9nqpdmrf"}
+{"time":"2024-12-13T15:31:46.304541564+08:00","level":"INFO","msg":"handler: closed","stream_id":"9nqpdmrf"}
+{"time":"2024-12-13T15:31:46.304580925+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"9nqpdmrf"}
+{"time":"2024-12-13T15:31:46.304621726+08:00","level":"INFO","msg":"sender: closed","stream_id":"9nqpdmrf"}
+{"time":"2024-12-13T15:31:46.304674647+08:00","level":"INFO","msg":"stream: closed","id":"9nqpdmrf"}

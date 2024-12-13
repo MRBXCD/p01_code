@@ -1,0 +1,21 @@
+Loaded training data from: /home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_train_data_16_angles_padded.npz
+Loaded val data from: /home/mrb2/experiments/graduation_project/shared_data/projection/raw/Projection_val_data_16_angles_padded.npz
+Train data information:
+Caution: Max value of input data is 46.328514099121094, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Caution: Max value of input data is 40.22502899169922, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Data shuffled
+-------Train From Beginning-------
+Traceback (most recent call last):
+  File "/home/mrb2/experiments/graduation_project/p01_code/projection_predict/main.py", line 87, in <module>
+    main()
+  File "/home/mrb2/experiments/graduation_project/p01_code/projection_predict/main.py", line 82, in main
+    model_train.train()
+  File "/home/mrb2/experiments/graduation_project/p01_code/projection_predict/trainer.py", line 429, in train
+    metric_train = self.train_epoch(epoch + 1)
+  File "/home/mrb2/experiments/graduation_project/p01_code/projection_predict/trainer.py", line 247, in train_epoch
+    loss = self.loss_fn(predict, target)
+AttributeError: 'Trainer' object has no attribute 'loss_fn'

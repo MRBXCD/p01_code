@@ -1,0 +1,43 @@
+{"time":"2024-12-13T16:04:07.747002291+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-12-13T16:04:07.747018941+08:00","level":"INFO","msg":"created symlink","path":"/home/mrb2/experiments/graduation_project/p01_code/projection_predict/wandb/run-20241213_160407-02z5nxvg/logs/debug-core.log"}
+{"time":"2024-12-13T16:04:07.949082223+08:00","level":"INFO","msg":"created new stream","id":"02z5nxvg"}
+{"time":"2024-12-13T16:04:07.949116684+08:00","level":"INFO","msg":"stream: started","id":"02z5nxvg"}
+{"time":"2024-12-13T16:04:07.949184935+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"02z5nxvg"}
+{"time":"2024-12-13T16:04:07.949225436+08:00","level":"INFO","msg":"sender: started","stream_id":"02z5nxvg"}
+{"time":"2024-12-13T16:04:07.949248055+08:00","level":"INFO","msg":"handler: started","stream_id":"02z5nxvg"}
+{"time":"2024-12-13T16:04:08.90116846+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-13T16:06:39.808574697+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T16:20:09.828174761+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T16:26:09.839205891+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T16:39:09.81472363+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T16:39:54.833024408+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T16:42:09.848686073+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T16:44:39.833521894+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T16:48:10.816862352+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T16:49:09.817720185+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T16:50:09.843785621+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:09:39.825381622+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:10:24.83594119+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:22:09.843244508+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:22:39.817649405+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:23:39.826624371+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:24:10.064367826+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:25:24.823898959+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:27:09.813504266+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:28:54.826132069+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:28:57.203743258+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:42:54.846346222+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:47:39.819253405+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:51:24.825526355+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:52:39.826217231+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:57:37.034599569+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-13T17:57:37.036959552+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-13T17:57:38.036519295+08:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run config","runtime_seconds":0.308767369}],"total_operations":1}}
+{"time":"2024-12-13T17:57:49.46605222+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-13T17:57:49.631489934+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:57:51.820541449+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/CBCT-Reconstruction/projection-domain-dl/02z5nxvg/file_stream\": EOF"}
+{"time":"2024-12-13T17:57:57.924334555+08:00","level":"INFO","msg":"stream: closing","id":"02z5nxvg"}
+{"time":"2024-12-13T17:57:57.924381335+08:00","level":"INFO","msg":"handler: closed","stream_id":"02z5nxvg"}
+{"time":"2024-12-13T17:57:57.924422786+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"02z5nxvg"}
+{"time":"2024-12-13T17:57:57.924509648+08:00","level":"INFO","msg":"sender: closed","stream_id":"02z5nxvg"}
+{"time":"2024-12-13T17:57:57.92463578+08:00","level":"INFO","msg":"stream: closed","id":"02z5nxvg"}
