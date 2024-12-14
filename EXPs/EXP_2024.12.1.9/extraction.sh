@@ -1,6 +1,6 @@
 export CUDA_VISIBLE_DEVICES=0
 
-cd /home/mrb2/experiments/graduation_project/p01_code/projection_predict
+cd /root/autodl-tmp/p01_code/projection_predict
 
 for loss_method in L1
 do
@@ -9,7 +9,7 @@ python main.py \
     --exp_group stage_8-16\
     --exp_name $loss_method\
     --net unet\
-    --data_path /home/mrb2/experiments/graduation_project/shared_data/projection/raw\
+    --data_path /root/autodl-tmp/shared_data/projection/raw\
     --device cuda\
     --epochs 200\
     --batch_size 8\

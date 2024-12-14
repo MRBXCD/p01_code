@@ -1,0 +1,32 @@
+2024-12-14 15:08:18,317 INFO    MainThread:69123 [wandb_setup.py:_flush():79] Current SDK version is 0.18.7
+2024-12-14 15:08:18,318 INFO    MainThread:69123 [wandb_setup.py:_flush():79] Configure stats pid to 69123
+2024-12-14 15:08:18,318 INFO    MainThread:69123 [wandb_setup.py:_flush():79] Loading settings from /root/.config/wandb/settings
+2024-12-14 15:08:18,318 INFO    MainThread:69123 [wandb_setup.py:_flush():79] Loading settings from /root/autodl-tmp/p01_code/projection_predict/wandb/settings
+2024-12-14 15:08:18,318 INFO    MainThread:69123 [wandb_setup.py:_flush():79] Loading settings from environment variables: {}
+2024-12-14 15:08:18,318 INFO    MainThread:69123 [wandb_setup.py:_flush():79] Applying setup settings: {'mode': 'online', '_disable_service': None}
+2024-12-14 15:08:18,318 INFO    MainThread:69123 [wandb_setup.py:_flush():79] Inferring run settings from compute environment: {'program_relpath': 'projection_predict/main.py', 'program_abspath': '/root/autodl-tmp/p01_code/projection_predict/main.py', 'program': '/root/autodl-tmp/p01_code/projection_predict/main.py'}
+2024-12-14 15:08:18,318 INFO    MainThread:69123 [wandb_setup.py:_flush():79] Applying login settings: {}
+2024-12-14 15:08:18,319 INFO    MainThread:69123 [wandb_init.py:_log_setup():533] Logging user logs to /root/autodl-tmp/p01_code/projection_predict/wandb/run-20241214_150818-w498qw28/logs/debug.log
+2024-12-14 15:08:18,319 INFO    MainThread:69123 [wandb_init.py:_log_setup():534] Logging internal logs to /root/autodl-tmp/p01_code/projection_predict/wandb/run-20241214_150818-w498qw28/logs/debug-internal.log
+2024-12-14 15:08:18,319 INFO    MainThread:69123 [wandb_init.py:init():619] calling init triggers
+2024-12-14 15:08:18,319 INFO    MainThread:69123 [wandb_init.py:init():626] wandb.init called with sweep_config: {}
+config: {'exp_id': 'EXP_2024.12.1.9', 'exp_name': 'MSE', 'exp_group': 'stage_8-16', 'data_path': '/root/autodl-tmp/shared_data/projection/raw', 'net': 'unet', 'device': 'cuda', 'epochs': 600, 'batch_size': 16, 'lr': 0.0002, 'scheduler': True, 'tmax': 20, 'dropout': 0.0, 'early_stop': True, 'patience': 15, 'if_load_weight': False, 'check_point': 0, 'stage': '8-16', 'norm': False, 'loss_method': 'MSE', 'if_extraction': False, 'if_infer': False, 'wandb': 'online'}
+2024-12-14 15:08:18,319 INFO    MainThread:69123 [wandb_init.py:init():669] starting backend
+2024-12-14 15:08:18,319 INFO    MainThread:69123 [wandb_init.py:init():673] sending inform_init request
+2024-12-14 15:08:18,322 INFO    MainThread:69123 [backend.py:_multiprocessing_setup():104] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-12-14 15:08:18,323 INFO    MainThread:69123 [wandb_init.py:init():686] backend started and connected
+2024-12-14 15:08:18,330 INFO    MainThread:69123 [wandb_init.py:init():781] updated telemetry
+2024-12-14 15:08:18,340 INFO    MainThread:69123 [wandb_init.py:init():814] communicating run to backend with 90.0 second timeout
+2024-12-14 15:08:19,805 INFO    MainThread:69123 [wandb_init.py:init():867] starting run threads in backend
+2024-12-14 15:08:19,973 INFO    MainThread:69123 [wandb_run.py:_console_start():2456] atexit reg
+2024-12-14 15:08:19,973 INFO    MainThread:69123 [wandb_run.py:_redirect():2305] redirect: wrap_raw
+2024-12-14 15:08:19,974 INFO    MainThread:69123 [wandb_run.py:_redirect():2370] Wrapping output streams.
+2024-12-14 15:08:19,974 INFO    MainThread:69123 [wandb_run.py:_redirect():2395] Redirects installed.
+2024-12-14 15:08:19,977 INFO    MainThread:69123 [wandb_init.py:init():911] run started, returning control to user process
+2024-12-14 15:34:49,138 INFO    MainThread:69123 [wandb_run.py:_finish():2155] finishing run CBCT-Reconstruction/projection-domain-dl/w498qw28
+2024-12-14 15:34:49,139 INFO    MainThread:69123 [wandb_run.py:_atexit_cleanup():2420] got exitcode: 0
+2024-12-14 15:34:49,140 INFO    MainThread:69123 [wandb_run.py:_restore():2402] restore
+2024-12-14 15:34:49,140 INFO    MainThread:69123 [wandb_run.py:_restore():2408] restore done
+2024-12-14 15:35:43,559 INFO    MainThread:69123 [wandb_run.py:_footer_history_summary_info():3960] rendering history
+2024-12-14 15:35:43,562 INFO    MainThread:69123 [wandb_run.py:_footer_history_summary_info():3992] rendering summary
+2024-12-14 15:35:43,579 INFO    MainThread:69123 [wandb_run.py:_footer_sync_info():3921] logging synced files

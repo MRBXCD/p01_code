@@ -1,0 +1,16 @@
+{"time":"2024-12-14T14:36:15.604185501+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-12-14T14:36:15.604222868+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241214_143615-rikxj455/logs/debug-core.log"}
+{"time":"2024-12-14T14:36:15.724771759+08:00","level":"INFO","msg":"created new stream","id":"rikxj455"}
+{"time":"2024-12-14T14:36:15.724886519+08:00","level":"INFO","msg":"stream: started","id":"rikxj455"}
+{"time":"2024-12-14T14:36:15.724941228+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"rikxj455"}
+{"time":"2024-12-14T14:36:15.724941252+08:00","level":"INFO","msg":"sender: started","stream_id":"rikxj455"}
+{"time":"2024-12-14T14:36:15.724960538+08:00","level":"INFO","msg":"handler: started","stream_id":"rikxj455"}
+{"time":"2024-12-14T14:36:17.09487616+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-14T14:36:22.793623906+08:00","level":"INFO","msg":"stream: closing","id":"rikxj455"}
+{"time":"2024-12-14T14:36:22.793659125+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-14T14:36:22.794463961+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-14T14:36:26.578901766+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-14T14:36:27.475262572+08:00","level":"INFO","msg":"handler: closed","stream_id":"rikxj455"}
+{"time":"2024-12-14T14:36:27.475352847+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"rikxj455"}
+{"time":"2024-12-14T14:36:27.475365072+08:00","level":"INFO","msg":"sender: closed","stream_id":"rikxj455"}
+{"time":"2024-12-14T14:36:27.475490629+08:00","level":"INFO","msg":"stream: closed","id":"rikxj455"}

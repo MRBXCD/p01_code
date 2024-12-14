@@ -1,0 +1,77 @@
+{
+  "os": "Linux-5.15.0-78-generic-x86_64-with-glibc2.31",
+  "python": "3.10.15",
+  "startedAt": "2024-12-14T07:08:18.324132Z",
+  "args": [
+    "--exp_id",
+    "EXP_2024.12.1.9",
+    "--exp_group",
+    "stage_8-16",
+    "--exp_name",
+    "MSE",
+    "--net",
+    "unet",
+    "--data_path",
+    "/root/autodl-tmp/shared_data/projection/raw",
+    "--device",
+    "cuda",
+    "--epochs",
+    "600",
+    "--batch_size",
+    "16",
+    "--lr",
+    "2e-4",
+    "--dropout",
+    "0",
+    "--scheduler",
+    "True",
+    "--early_stop",
+    "True",
+    "--check_point",
+    "0",
+    "--stage",
+    "8-16",
+    "--loss_method",
+    "MSE",
+    "--wandb",
+    "online"
+  ],
+  "program": "/root/autodl-tmp/p01_code/projection_predict/main.py",
+  "codePath": "projection_predict/main.py",
+  "git": {
+    "remote": "https://github.com/MRBXCD/p01_code.git",
+    "commit": "4200c3c7c1b30581c9f3bc6e597733c9e345c63e"
+  },
+  "email": "bibodong.ac@gmail.com",
+  "root": "/root/autodl-tmp/p01_code/projection_predict",
+  "host": "autodl-container-b33448a49f-dceb1e1b",
+  "username": "root",
+  "executable": "/root/miniconda3/envs/p01/bin/python",
+  "codePathLocal": "main.py",
+  "cpu_count": 64,
+  "cpu_count_logical": 128,
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "32212254720",
+      "used": "14161580032"
+    }
+  },
+  "memory": {
+    "total": "1081808048128"
+  },
+  "cpu": {
+    "count": 64,
+    "countLogical": 128
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 4090",
+      "memoryTotal": "25757220864",
+      "cudaCores": 16384,
+      "architecture": "Ada"
+    }
+  ],
+  "cudaVersion": "12.2"
+}

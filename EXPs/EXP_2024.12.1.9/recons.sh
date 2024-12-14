@@ -3,14 +3,14 @@
 # train_proj=/home/mrb2/experiments/graduation_project/p01_code/projection_predict/result/extraction/4-8/EXP_2024.12.1.10_L1_model_output_train.npz
 # val_proj=/home/mrb2/experiments/graduation_project/p01_code/projection_predict/result/extraction/4-8/EXP_2024.12.1.10_L1_model_output_val.npz
 
-train_proj=/home/mrb2/experiments/graduation_project/p01_code/reconstruction/result/projection/4_angles/Projection_train_data_4_angles_padded.npz
-val_proj=/home/mrb2/experiments/graduation_project/p01_code/reconstruction/result/projection/4_angles/Projection_val_data_4_angles_padded.npz
+train_proj=/root/autodl-tmp/p01_code/projection_predict/result/extraction/8-16/EXP_2024.12.1.9_L1_model_output_train.npz
+val_proj=/root/autodl-tmp/p01_code/projection_predict/result/extraction/8-16/EXP_2024.12.1.9_L1_model_output_val.npz
 
-cd /home/mrb2/experiments/graduation_project/p01_code/reconstruction
+cd /root/autodl-tmp/p01_code/reconstruction
 
 python3 main.py \
     --operation reconstruction \
-    --n_angle 4 \
+    --n_angle 16 \
     --projection_path_train $train_proj \
     --projection_path_val $val_proj \
 

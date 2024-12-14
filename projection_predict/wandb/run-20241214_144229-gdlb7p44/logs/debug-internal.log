@@ -1,0 +1,16 @@
+{"time":"2024-12-14T14:42:29.197264645+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-12-14T14:42:29.197300101+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241214_144229-gdlb7p44/logs/debug-core.log"}
+{"time":"2024-12-14T14:42:29.31826661+08:00","level":"INFO","msg":"created new stream","id":"gdlb7p44"}
+{"time":"2024-12-14T14:42:29.318362901+08:00","level":"INFO","msg":"stream: started","id":"gdlb7p44"}
+{"time":"2024-12-14T14:42:29.31850691+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"gdlb7p44"}
+{"time":"2024-12-14T14:42:29.318592458+08:00","level":"INFO","msg":"handler: started","stream_id":"gdlb7p44"}
+{"time":"2024-12-14T14:42:29.318739822+08:00","level":"INFO","msg":"sender: started","stream_id":"gdlb7p44"}
+{"time":"2024-12-14T14:42:30.690047533+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-14T14:42:36.614534447+08:00","level":"INFO","msg":"stream: closing","id":"gdlb7p44"}
+{"time":"2024-12-14T14:42:36.614596144+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-14T14:42:36.615614016+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-14T14:42:40.909096334+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-14T14:42:41.796852027+08:00","level":"INFO","msg":"handler: closed","stream_id":"gdlb7p44"}
+{"time":"2024-12-14T14:42:41.796961595+08:00","level":"INFO","msg":"sender: closed","stream_id":"gdlb7p44"}
+{"time":"2024-12-14T14:42:41.796940004+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"gdlb7p44"}
+{"time":"2024-12-14T14:42:41.797214828+08:00","level":"INFO","msg":"stream: closed","id":"gdlb7p44"}

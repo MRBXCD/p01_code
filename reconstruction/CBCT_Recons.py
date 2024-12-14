@@ -300,8 +300,8 @@ class Recons:
         reconstruction_val = []
         mse_total_individual = []
 
-        voxel_raw_train = np.load('/home/mrb2/experiments/graduation_project/shared_data/voxel/raw/Train_LIDC_128.npz')['arr_0']
-        voxel_raw_val = np.load('/home/mrb2/experiments/graduation_project/shared_data/voxel/raw/Val_LIDC_128.npz')['arr_0']
+        voxel_raw_train = np.load('/root/autodl-tmp/shared_data/voxel/raw/Train_LIDC_128.npz')['arr_0']
+        voxel_raw_val = np.load('/root/autodl-tmp/shared_data/voxel/raw/Val_LIDC_128.npz')['arr_0']
         print('Shape of train projections:', np.shape(projections_train))
         print('Shape of val projections:', np.shape(projections_val))
 

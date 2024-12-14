@@ -1,0 +1,18 @@
+{"time":"2024-12-14T14:39:09.646611171+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-12-14T14:39:09.646647382+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241214_143909-j7cb9074/logs/debug-core.log"}
+{"time":"2024-12-14T14:39:09.768519407+08:00","level":"INFO","msg":"created new stream","id":"j7cb9074"}
+{"time":"2024-12-14T14:39:09.768587865+08:00","level":"INFO","msg":"stream: started","id":"j7cb9074"}
+{"time":"2024-12-14T14:39:09.768633016+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"j7cb9074"}
+{"time":"2024-12-14T14:39:09.768650211+08:00","level":"INFO","msg":"sender: started","stream_id":"j7cb9074"}
+{"time":"2024-12-14T14:39:09.76863304+08:00","level":"INFO","msg":"handler: started","stream_id":"j7cb9074"}
+{"time":"2024-12-14T14:39:11.105629198+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-14T14:39:31.690854062+08:00","level":"ERROR","msg":"file transfer: upload: failed to upload: 400 Bad Request","task":"DefaultUploadTask{FileKind: 0, Path: /root/autodl-tmp/p01_code/projection_predict/wandb/run-20241214_143909-j7cb9074/files/EXP_2024.12.1.9_stage_8-16_MSE.pth, Name: EXP_2024.12.1.9_stage_8-16_MSE.pth, Url: https://storage.googleapis.com/wandb-production.appspot.com/CBCT-Reconstruction/projection-domain-dl/j7cb9074/EXP_2024.12.1.9_stage_8-16_MSE.pth?Expires=1734244757&GoogleAccessId=gorilla-files-url-signer-man%40wandb-production.iam.gserviceaccount.com&Signature=iCDrq5Yhhh%2Fcw8nJrcXyb51i3KW1EQUQ5V4hnjVNu3e7eetiAxvV1bXTsN0QbLb3bBLPU8LDorB%2BCzdbv%2FhuNLLqRMuNoMZdAVpJr2GYGzN6EDD7iuDufq0kze%2BmpSJ4%2Bw2MgHCucocNx19jX9LLCtMscjArp5Ol%2FgyMosI6lMWHbf60OyKKyxJMD4aawFzIQb6RrjERfkJiOSArWoNWNiifsLEOVn%2BeSnbrWNMmbXr533sD3RypTbl7nTzs5StZAdUfZc%2BDkT7zqIpO4rvT%2F7S2omgd%2FmhNw4QdZTcgPyLM1ti51Daak%2BDX%2BK76rCnGxNqEM53Oass8QSTIyjR67A%3D%3D, Size: 31144758}"}
+{"time":"2024-12-14T14:39:42.615805551+08:00","level":"ERROR","msg":"file transfer: upload: failed to upload: 400 Bad Request","task":"DefaultUploadTask{FileKind: 0, Path: /root/autodl-tmp/p01_code/projection_predict/wandb/run-20241214_143909-j7cb9074/files/EXP_2024.12.1.9_stage_8-16_MSE.pth, Name: EXP_2024.12.1.9_stage_8-16_MSE.pth, Url: https://storage.googleapis.com/wandb-production.appspot.com/CBCT-Reconstruction/projection-domain-dl/j7cb9074/EXP_2024.12.1.9_stage_8-16_MSE.pth?Expires=1734244767&GoogleAccessId=gorilla-files-url-signer-man%40wandb-production.iam.gserviceaccount.com&Signature=ATkJZyr8Q0ibEWmpfA09Nh2sgQlZEimSPnXoVwOfd7fwP43X1ZuVZA1AW%2BOhJ9N4qG%2BLmGFiAlb4Tq5SkKcD7%2FM09d%2FjMNOWOaS4DtQjNtzcAwPYXIyfOei7t%2FAN1L%2FQLNgZSe0oRnH5d74HFep9b3fe2adPUehB60eUuxQHLo1Z0U66oi4VPm6hMBb0pzIzZTpRNax6bay6v1DBouSLDonVcKuUkpw0JY8Z%2BdpT1uMDnSnnYZCMuvkEN1kMH1d%2FyOemF%2BiY9pzubEEQCMilBrJhPln1RtpUEtV%2FO84iQCzGMJdArt7rPSJ1YBW6OMveJJsKZkJTVn7Sbm5i6oEljQ%3D%3D, Size: 31144758}"}
+{"time":"2024-12-14T14:40:22.28319362+08:00","level":"INFO","msg":"stream: closing","id":"j7cb9074"}
+{"time":"2024-12-14T14:40:22.283256387+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-14T14:40:22.284323592+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-14T14:40:42.041071038+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-14T14:40:45.755685336+08:00","level":"INFO","msg":"handler: closed","stream_id":"j7cb9074"}
+{"time":"2024-12-14T14:40:45.755748818+08:00","level":"INFO","msg":"sender: closed","stream_id":"j7cb9074"}
+{"time":"2024-12-14T14:40:45.755729697+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"j7cb9074"}
+{"time":"2024-12-14T14:40:45.755939744+08:00","level":"INFO","msg":"stream: closed","id":"j7cb9074"}

@@ -245,7 +245,8 @@ class Trainer:
             target = target.to(self.device)
             predict = self.model(input)
             loss = self.loss_fn(predict, target)
-            metrics.append(self.evaluation_metrics(predict, target))
+            if epoch % 10 == 0:
+                metrics.append(self.evaluation_metrics(predict, target))
             self.optimizer.zero_grad()
             loss.backward()
             self.optimizer.step()
@@ -253,10 +254,13 @@ class Trainer:
         if self.scheduler:
             scheduler.step()
         avg_total_loss = sum(total_losses[-len(self.train_loader):]) / len(self.train_loader)
-        avg_normalized_rmse = sum(metric[0] for metric in metrics) / len(metrics)
-        avg_normalized_psnr = sum(metric[1] for metric in metrics) / len(metrics)
-        avg_normalized_ssim = sum(metric[2] for metric in metrics) / len(metrics)
-        return avg_total_loss, avg_normalized_rmse, avg_normalized_psnr, avg_normalized_ssim
+        if epoch % 10 == 0:
+            avg_normalized_rmse = sum(metric[0] for metric in metrics) / len(metrics)
+            avg_normalized_psnr = sum(metric[1] for metric in metrics) / len(metrics)
+            avg_normalized_ssim = sum(metric[2] for metric in metrics) / len(metrics)
+            return avg_total_loss, avg_normalized_rmse, avg_normalized_psnr, avg_normalized_ssim
+        else:
+            return avg_total_loss
 
     def val_epoch(self, epoch):
         self.model.eval()
@@ -268,13 +272,17 @@ class Trainer:
                 target = target.to(self.device)
                 predict = self.model(input)
                 loss = self.loss_fn(predict, target)
-                metrics.append(self.evaluation_metrics(predict, target))
+                if epoch % 10 == 0:
+                    metrics.append(self.evaluation_metrics(predict, target))
                 total_losses.append(loss.item())
         avg_total_loss = sum(total_losses[-len(self.val_loader):]) / len(self.val_loader)
-        avg_normalized_rmse = sum(metric[0] for metric in metrics) / len(metrics)
-        avg_normalized_psnr = sum(metric[1] for metric in metrics) / len(metrics)
-        avg_normalized_ssim = sum(metric[2] for metric in metrics) / len(metrics)
-        return avg_total_loss, avg_normalized_rmse, avg_normalized_psnr, avg_normalized_ssim
+        if epoch % 10 == 0:
+            avg_normalized_rmse = sum(metric[0] for metric in metrics) / len(metrics)
+            avg_normalized_psnr = sum(metric[1] for metric in metrics) / len(metrics)
+            avg_normalized_ssim = sum(metric[2] for metric in metrics) / len(metrics)
+            return avg_total_loss, avg_normalized_rmse, avg_normalized_psnr, avg_normalized_ssim
+        else:
+            return avg_total_loss
 
     def extraction_epoch(self):
         self.model.eval()
@@ -393,20 +401,33 @@ class Trainer:
                 metric_val = self.val_epoch(epoch + 1)
                 self.train_metrics.append(metric_train)
                 self.val_metrics.append(metric_val)
-                wandb.log(
-                        {
-                            'Present Epoch': epoch + 1,
-                            'Total Epoch': self.epochs,
-                            'Train Total Loss': round(metric_train[0],6),
-                            'Val Total Loss': round(metric_val[0],6),
-                            'Train Total RMSE': round(metric_train[1],6),
-                            'Val Total RMSE': round(metric_val[1],6),
-                            'Train Total PSNR': round(metric_train[2],6),
-                            'Val Total PSNR': round(metric_val[2],6),
-                            'Train Total SSIM': round(metric_train[3],6),
-                            'Val Total SSIM': round(metric_val[3],6)
-                        }
-                    )
+                suffix = f"{self.exp_group}_{self.exp_name}"
+                if (epoch+1) % 10 == 0:
+                    wandb.log(
+                            {
+                                'Present Epoch': epoch + 1,
+                                'Total Epoch': self.epochs,
+                                'Train Total Loss': round(metric_train[0],6),
+                                'Val Total Loss': round(metric_val[0],6),
+                                'Train Total RMSE': round(metric_train[1],6),
+                                'Val Total RMSE': round(metric_val[1],6),
+                                'Train Total PSNR': round(metric_train[2],6),
+                                'Val Total PSNR': round(metric_val[2],6),
+                                'Train Total SSIM': round(metric_train[3],6),
+                                'Val Total SSIM': round(metric_val[3],6)
+                            }
+                        )
+                    self.early_stopping(metric_val[0], self.model, self.exp_id, suffix)
+                else:
+                    wandb.log(
+                            {
+                                'Present Epoch': epoch + 1,
+                                'Total Epoch': self.epochs,
+                                'Train Total Loss': round(metric_train,6),
+                                'Val Total Loss': round(metric_val,6),
+                            }
+                        )
+                    self.early_stopping(metric_val, self.model, self.exp_id, suffix)
                 if (epoch + 1) % 10 == 0:
                     print(f"Epoch {epoch + 1}/{self.epochs}\n"
                           f"Train:  Loss - {metric_train[0]:.6f}  | RMSE - {metric_train[1]:.6f}  | PSNR - {metric_train[2]:.6f}  | SSIM - {metric_train[3]:.6f}\n"
@@ -415,8 +436,6 @@ class Trainer:
                 if (epoch + 1) % 20 == 0:
                     print("lr = {:.10f}".format(self.optimizer.param_groups[0]['lr']))
                     # self.model_checkpoint_save(epoch, self.train_metrics, self.val_metrics)
-                suffix = f"{self.exp_group}_{self.exp_name}"
-                self.early_stopping(metric_val[0], self.model, self.exp_id, suffix)
 
                 if self.early_stopping.early_stop:
                     print("Early stopped, training terminated")

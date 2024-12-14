@@ -1,0 +1,17 @@
+{"time":"2024-12-14T14:50:30.05630168+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2024-12-14T14:50:30.056339447+08:00","level":"INFO","msg":"created symlink","path":"/root/autodl-tmp/p01_code/projection_predict/wandb/run-20241214_145030-5qr96mt7/logs/debug-core.log"}
+{"time":"2024-12-14T14:50:30.177885649+08:00","level":"INFO","msg":"created new stream","id":"5qr96mt7"}
+{"time":"2024-12-14T14:50:30.17796092+08:00","level":"INFO","msg":"stream: started","id":"5qr96mt7"}
+{"time":"2024-12-14T14:50:30.178098682+08:00","level":"INFO","msg":"sender: started","stream_id":"5qr96mt7"}
+{"time":"2024-12-14T14:50:30.178097392+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"5qr96mt7"}
+{"time":"2024-12-14T14:50:30.178202668+08:00","level":"INFO","msg":"handler: started","stream_id":"5qr96mt7"}
+{"time":"2024-12-14T14:50:31.874079853+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-12-14T14:50:43.912826633+08:00","level":"ERROR","msg":"file transfer: upload: failed to upload: 400 Bad Request","task":"DefaultUploadTask{FileKind: 0, Path: /root/autodl-tmp/p01_code/projection_predict/wandb/run-20241214_145030-5qr96mt7/files/EXP_2024.12.1.9_stage_8-16_MSE.pth, Name: EXP_2024.12.1.9_stage_8-16_MSE.pth, Url: https://storage.googleapis.com/wandb-production.appspot.com/CBCT-Reconstruction/projection-domain-dl/5qr96mt7/EXP_2024.12.1.9_stage_8-16_MSE.pth?Expires=1734245438&GoogleAccessId=gorilla-files-url-signer-man%40wandb-production.iam.gserviceaccount.com&Signature=mgRqBzl78sbD%2F%2BoINdq4MCTexaEXEF2Tk%2FpocFZrTa%2ByYvOwmA0enwoMlYE8Nv91PajiaxVx3vidts5HSmLbaUYMOgfAkG9C8823BpTGajO1phE4sYm5XWjjOJwM0X56eLShZtpTp6Ow8%2BlEtChpKl6OuIjeEb2IeeZB57efcp%2BRWGO1Sqp%2B2Bel7JSYOXEg0kU0GGv4Ym5hIpWHUruKVS0N0%2FiJThHrfmL9K757PSFEVHhYuDlblTMErhLRBnyyESy0oCxTR3Jk%2BdVyCyuaK7QXtlY%2FGf49OY3ZcLUE664Kk1UABb03QctNTLuYqpa9in7fhgWqP1%2FljzcnW3Ktnw%3D%3D, Size: 31144758}"}
+{"time":"2024-12-14T14:51:37.988634192+08:00","level":"INFO","msg":"stream: closing","id":"5qr96mt7"}
+{"time":"2024-12-14T14:51:37.988700473+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-12-14T14:51:37.989792843+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-12-14T14:52:12.759925991+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-12-14T14:52:15.303166944+08:00","level":"INFO","msg":"handler: closed","stream_id":"5qr96mt7"}
+{"time":"2024-12-14T14:52:15.303282174+08:00","level":"INFO","msg":"sender: closed","stream_id":"5qr96mt7"}
+{"time":"2024-12-14T14:52:15.303273014+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"5qr96mt7"}
+{"time":"2024-12-14T14:52:15.304623916+08:00","level":"INFO","msg":"stream: closed","id":"5qr96mt7"}

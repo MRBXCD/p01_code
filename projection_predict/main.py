@@ -41,7 +41,7 @@ def main():
                         help='dropout percent') 
     parser.add_argument('--early_stop', type=bool, default=False, 
                         help='if activate early stop function')
-    parser.add_argument('--patience', type=int, default=20, 
+    parser.add_argument('--patience', type=int, default=15, 
                         help='early stop patience')
     
     # Model save

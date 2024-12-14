@@ -1,0 +1,27 @@
+Loaded training data from: /root/autodl-tmp/shared_data/projection/raw/Projection_train_data_16_angles_padded.npz
+Loaded val data from: /root/autodl-tmp/shared_data/projection/raw/Projection_val_data_16_angles_padded.npz
+Train data information:
+Caution: Max value of input data is 46.328514099121094, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Caution: Max value of input data is 40.22502899169922, do data normalization
+Now is projection model, only the input data will be loaded, the target will be created automatically
+---------------------------------------------
+Data shuffled
+-------Train From Beginning-------
+Val loss decrease: (inf --> 14.158933), Saving checkpoint.
+Val loss decrease: (14.158933 --> 13.155211), Saving checkpoint.
+Val loss decrease: (13.155211 --> 11.750906), Saving checkpoint.
+Val loss decrease: (11.750906 --> 10.942249), Saving checkpoint.
+Val loss decrease: (10.942249 --> 9.725126), Saving checkpoint.
+Val loss decrease: (9.725126 --> 8.794338), Saving checkpoint.
+Val loss decrease: (8.794338 --> 8.000212), Saving checkpoint.
+Val loss decrease: (8.000212 --> 7.292032), Saving checkpoint.
+Traceback (most recent call last):
+  File "/root/autodl-tmp/p01_code/projection_predict/main.py", line 87, in <module>
+    main()
+  File "/root/autodl-tmp/p01_code/projection_predict/main.py", line 82, in main
+    model_train.train()
+  File "/root/autodl-tmp/p01_code/projection_predict/trainer.py", line 426, in train
+    'Train Total Loss': round(metric_train,6),
+TypeError: type tuple doesn't define __round__ method
